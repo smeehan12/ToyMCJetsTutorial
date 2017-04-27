@@ -1,0 +1,489 @@
+%-------------------------------------------------------------------------------
+% Examples on how to make tables for ATLAS documents
+% Responsible: Ian Brock (Ian.Brock@cern.ch)
+%-------------------------------------------------------------------------------
+% Specify where ATLAS LaTeX style files can be found.
+\newcommand*{\ATLASLATEXPATH}{../../latex/}
+%-------------------------------------------------------------------------------
+\documentclass[UKenglish,texlive=2016]{\ATLASLATEXPATH atlasdoc}
+
+% Standard packages that can and should be used in ATLAS papers
+% Use biblatex and biber for the bibliography
+\usepackage[backend=biber]{\ATLASLATEXPATH atlaspackage}
+\usepackage{\ATLASLATEXPATH atlasbiblatex}
+\usepackage{authblk}
+\usepackage{verbatim}
+
+\usepackage{\ATLASLATEXPATH atlasphysics}
+
+\usepackage{atlas_tables-defs}
+
+% Files with references in BibTeX format
+\addbibresource{../atlas_latex.bib}
+
+\graphicspath{{../../logos/}}
+
+%-------------------------------------------------------------------------------
+% Generic document information
+%-------------------------------------------------------------------------------
+
+% Set author and title for the PDF file
+\hypersetup{pdftitle={ATLAS tables guide},pdfauthor={Ian Brock}}
+
+\AtlasTitle{Guide to formatting tables for ATLAS documents}
+
+\author{Ian C. Brock}
+\affil{University of Bonn}
+
+\AtlasAbstract{%
+  This document illustrates the preferred style for tables in ATLAS documents.
+  It illustrates what the tables should look like and also provides guidelines on how to achieve this look.
+  
+  This document was generated using version \ATPackageVersion\ of the ATLAS \LaTeX\ package.
+  The \TeX\ Live version is set to \ATTeXLiveVersion.
+  It uses the option \Option{atlasstyle}, which implies that the standard ATLAS preprint style is used.
+}
+
+
+%-------------------------------------------------------------------------------
+\begin{document} 
+
+\maketitle
+
+%-------------------------------------------------------------------------------
+\section{General guidelines}
+%-------------------------------------------------------------------------------
+
+Tables should only contain as many lines as are needed for clarity.
+Table~\ref{tab:yield:2dig} shows a good example that has been taken
+from \enquote{Rounding -- ATLAS Recommendations}~\cite{atlas-rounding}.
+
+\ifthenelse{\ATTeXLiveVersion < 2011}{%
+  \sisetup{retainplus=true}
+}{
+  \sisetup{retain-explicit-plus=true}
+}
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{%
+      l
+      r@{$\,\pm\,$}r
+    }
+    \toprule
+    {Channel} & \multicolumn{2}{c}{Selected events} \\
+    \midrule
+    $WW, WZ, ZZ$               & \numRF{943.045}{3}  & \numRF{94.3045}{2} \\
+    QCD multijets              & \numRF{2838.39}{2}  & \numRF{1419.19}{2} \\
+    $Wc\bar{c}, Wb\bar{b}, Wc$ & \numRF{31178  }{2}  & \numRF{13094.8}{2} \\
+    $W$ + jets                 & \numRF{10584.5}{3}  & \numRF{4445.49}{2} \\
+    Single top $Wt$            & \numRF{1699.75}{3}  & \numRF{152.977}{2} \\
+    $Z$ + jets                 & \numRF{2378.42}{2}  & \numRF{998.934}{2} \\
+    Single top $s$             & \numRF{297.591}{3}  & \numRF{12.4988}{2} \\
+    Single top $t$             & \numRF{3936.98}{3}  & \numRF{165.353}{2} \\
+    $t\bar{t}$                 & \numRF{9386.28}{3}  & \numRF{901.083}{2} \\
+    \midrule
+    Expected                   & \numRF{63243}{2}    & \numRF{13968.5}{2} \\
+    Data                       & \multicolumn{2}{l}{\num{73062}} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Example event yields spread over several orders of
+    magnitude.}
+  \label{tab:yield:2dig}
+\end{table}
+
+An example of a wider and somewhat more complicated table is shown in \Tab{\ref{tab:intro:presentlimits}}.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lllll}
+  \toprule
+  Coupling & \multicolumn{2}{c}{LEP} & \multicolumn{2}{c}{HERA} \\
+  \midrule
+  $\BR(t\to q\gamma)$ & \num{2.4E-2} &                       & \num{6.4E-3} & ($tu\gamma$)\\  
+  $\BR(t\to qZ)$      & \num{7.8E-2} &                       & \num{49E-2} & ($tuZ$)\\
+  $\BR(t\to qg)$      & \num{17E-2}  &                       & \num{13E-2} & \\
+  \bottomrule
+  Coupling & \multicolumn{2}{c}{Tevatron}                    & \multicolumn{2}{c}{LHC} \\
+  \midrule
+  $\BR(t\to q\gamma)$ & \num{3.2E-2} &                       & \multicolumn{1}{c}{---} \\
+  $\BR(t\to qZ)$      & \num{3.2E-2} &                       & \num{7.0E-4}\\
+  $\BR(t\to qg)$      & \num{2.0E-4} & ($tug$), $(2 \to 2)$  & \multicolumn{1}{c}{---} \\
+                      & \num{3.9E-3} & ($tcg$), $(2 \to 2)$  & \multicolumn{1}{c}{---} \\
+                      & \num{3.9E-4} & ($tug$), $(2 \to 1)$  & \num{5.7E-5} & ($tug$), $(2 \to 1)$\\
+                      & \num{5.7E-3} & ($tcg$), $(2 \to 1)$  & \num{2.7E-4} & ($tcg$), $(2 \to 1)$\\
+  \bottomrule
+  \end{tabular}
+  \caption[Present FCNC top quark decays experimental limits]{Present experimental limits at \SI{95}{\%} confidence level 
+    on the branching fractions of the FCNC top quark decay channels established by experiments of the LEP, HERA, Tevatron and LHC accelerators. }
+  \label{tab:intro:presentlimits}
+\end{table}
+
+A typical table containing Monte Carlo samples is given in \Tab{\ref{tab:mcsamples}}.
+
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{lSlS[table-format=9.0]SS[table-format=6.0]}
+\toprule
+  & {$\sigma$ [\si{\pb}]} & Generator
+  & \multicolumn{1}{c}{$N_{MC}$} & \multicolumn{1}{c}{$k$-factor} & \multicolumn{1}{c}{Dataset ID}\\
+\midrule
+$Wt$ all decays                         &  22           & \POWHEG + \PYTHIA        &   1000000  & 1.09 & 110140\\
+$t$-channel (lepton+jets) top           &  18           & \POWHEG + \PYTHIA        &   5000000  & 1.05 & 110090\\
+$s$-channel (lepton+jets) antitop       &  1.8          & \POWHEG + \PYTHIA        &   5000000  & 1.06 & 110091\\
+$t\bar{t}$ no fully hadronic            & 114           & \POWHEG + \PYTHIA        & 100000000  & 1.12 & 117050\\
+\bottomrule
+\end{tabular}
+\caption{Top quark event MC samples used for this analysis. The cross-section column includes $k$-factors and branching ratios. }
+%The ATLAS geometry tag {\it ATLAS-GEO-16-00-00} is used and the reconstruction software was based on {\it release 16.6.3.5.1}.}
+%(WARNING: update geo tag and software version)
+\label{tab:mcsamples}
+\end{table}
+
+Table~\ref{tab:example1} shows the use of $\pm$ as the intercolumn
+character for alignment. An alternative, as shown in
+Table~\ref{tab:example2}, is to use \verb+\phantom+ to put in extra
+space equal to the width of a number if you have different numbers of
+decimal places in the table.
+
+The \texttt{booktabs} package provides the macros 
+\Macro{toprule}, \Macro{midrule}, \Macro{bottomrule} which are to be preferred over \Macro{hline},
+as, among other things, they introduce some extra spacing around the lines, which is useful.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{l S[table-format=2.1]@{$\;\pm\;$}S[table-format=1.1]@{\,}s
+    S[table-format=3.1]@{\,}s}
+    \toprule
+    Category            & \multicolumn{3}{c}{$\mu$}&\multicolumn{2}{c}{$e$}\\ 
+    \midrule
+    $b \to \ell$        &     65.2 & 0.4 & \%   &  79.3 & \% \\
+    $b \to c \to \ell$  &      7.8 & 0.3 & \%   &   5.4 & \% \\
+    Total               &     73.0 & 0.2 & \%   &   9.1 & \% \\ 
+    \bottomrule
+  \end{tabular}
+  \caption[Monte Carlo purities in the single lepton sample]{%
+    Monte Carlo estimates of the fraction of each process in the single
+    lepton data sample. This table uses ``S'' format from \texttt{siunitx} and
+    ``\texttt{$\,\pm\,$}'' as the intercolumn separator.}
+  \label{tab:example1}
+\end{table}
+
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lcc}
+    \toprule
+    Category            & \multicolumn{1}{c}{$\mu$}&\multicolumn{1}{c}{$e$}\\ 
+    \midrule
+    $b \to \ell$        & $    65.2 \pm 0.4\,\%$   &     79.3\,\% \\
+    $b \to c \to \ell$  & $\pho 7.8 \pm 0.3\,\%$   & \pho 5.4\,\% \\
+    Total               & $    73.0 \pm 0.2\,\%$   & \pho 9.1\,\% \\ 
+    \bottomrule
+  \end{tabular}
+  \caption{Monte Carlo estimates of the fraction of each process in
+    the single lepton data sample. 
+    This table uses \texttt{\textbackslash phantom}.}
+  \label{tab:example2}
+\end{table}
+
+%-------------------------------------------------------------------------------
+\section{\LaTeX\ packages for table}
+%-------------------------------------------------------------------------------
+
+The \LaTeX\ package \Package{booktabs} gives a number of guidelines on how tables should be formatted.
+These are followed to a large extent in this document.
+The following packages related to tables are included by default when you load the package \Package{atlaspackage}:
+\begin{description}
+\item[booktabs] useful tools for formatting tables;
+\item[siunitx] tools for rounding and also for helping to format and align numbers in tables;
+\end{description}
+Further packages related to the formatting of tables are:
+\begin{description}
+\item[xtab] the most modern package for tables that spread over more than one page;
+\item[longtable] an alternative package for long tables;
+\item[supertabular] yet another alternative package for long tables;
+\item[dcolumn] can be used as an alternative to \Package{siunitx} to align numbers in tables.
+\end{description}
+\Package{xtab} is included if you load \Package{atlaspackage} with the option \Option{full}.
+You may also need to rotate a big table. 
+The \Package{rotating} package can be used for this.
+
+In order to shorten commands when doing rounding in tables, it is useful to define a few extra macros.
+Typical definitions can be found in the file \File{atlas\_tables-defs.sty}.
+
+
+%-------------------------------------------------------------------------------
+\section{Tables and rounding}
+%-------------------------------------------------------------------------------
+
+Further examples of tables can be found in the note discussing the ATLAS recommendation on rounding~\cite{atlas-rounding}.
+A selection of those tables are also reproduced here.
+The \LaTeX\ code for the examples given below can be found in 
+Appendix~\ref{sec:raw-data}.
+
+The tables shown earlier in this document were also created with \textsf{siunitx}.
+A few more examples of how to steer the formatting are given here.
+Table~\ref{tab:rounding:xsect} compares two different approaches
+to how this can be done  in \textsf{siunitx}, even for asymmetric errors.  Note that although these
+tables look almost identical, the syntax used to create them is different (see Appendix~\ref{sec:raw-data}).
+While the form may appear to be a bit clumsy at first, it is easy enough to get a
+program to write out the lines. In the left-hand table
+\Macro{numRP} is used in column 3, while the full syntax of \Macro{num} 
+in shown in column 4 for illustration purposes only.  The syntax
+to change the precision of a single number is shown in the first line of
+the left-hand part of the table. This is seen to be rather
+trivial, but the alignment on the decimal point is now no longer
+perfect. While this is probably OK for internal notes etc., papers
+(should) have more stringent requirements. Another way of achieving
+the same thing and avoiding the use of \textsf{round-mode} and
+\textsf{round-precision} is shown in the code for the right-hand table. Note the
+use of options for the \textsf{S} format and the use of \Macro{num} enclosed
+in braces to format the row that requires a different precision.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.4}
+  \sisetup{retain-explicit-plus}
+  \sisetup{round-mode = places}
+  \begin{tabular}{%
+      S@{\,:\,}S
+      r@{\,}@{$\pm$}@{\,}l@{\,}l
+       }
+    \toprule
+    \multicolumn{2}{c}{\etajet} & \multicolumn{3}{c}{\diffetab} \\
+    \multicolumn{2}{c}{} & \multicolumn{3}{c}{[\si{\pico\barn}]} \\
+    \midrule
+    {\num{-1.6}} & -1.1 & \numRP{0.574}{3} & \num[round-precision=3]{0.094} & $^{\numRP{+0.035}{3}}_{\numRP{-0.031}{3}}$ \\
+    {\num{-1.1}} & -0.8 & \numRP{1.213}{2} & \num[round-precision=2]{0.211} & $^{\numRP{+0.162}{2}}_{\numRP{-0.162}{2}}$ \\
+    {\num{-0.8}} & -0.5 & \numRP{2.141}{2} & \num[round-precision=2]{0.219} & $^{\numRP{+0.223}{2}}_{\numRP{-0.123}{2}}$ \\
+    {\num{-0.5}} & -0.2 & \numRP{2.326}{2} & \num[round-precision=2]{0.210} & $^{\numRP{+0.284}{2}}_{\numRP{-0.214}{2}}$ \\
+    {\num{-0.2}} & +0.1 & \numRP{2.641}{2} & \num[round-precision=2]{0.220} & $^{\numRP{+0.283}{2}}_{\numRP{-0.233}{2}}$ \\
+    {\num{+0.1}} & +0.5 & \numRP{3.160}{2} & \num[round-precision=2]{0.211} & $^{\numRP{+0.232}{2}}_{\numRP{-0.172}{2}}$ \\
+    {\num{+0.5}} & +1.4 & \numRP{2.881}{2} & \num[round-precision=2]{0.154} & $^{\numRP{+0.201}{2}}_{\numRP{-0.301}{2}}$ \\
+    \bottomrule
+  \end{tabular}
+  \quad
+  \sisetup{round-mode = places, round-precision = 2}
+  \begin{tabular}{%
+      S[table-format=3.2, table-number-alignment = right]@{\,:\,}S
+      S[round-mode = places, round-precision = 2,
+      table-format = 1.3, table-number-alignment = right]
+      @{$\,\pm\,$}
+      S[round-mode = places, round-precision = 2,
+      table-format = 1.3, table-number-alignment = left]
+      @{\,}l
+       }
+    \toprule
+    \multicolumn{2}{c}{\etajet} & \multicolumn{3}{c}{\diffetab} \\
+    \multicolumn{2}{c}{} & \multicolumn{3}{c}{[\si{\pico\barn}]} \\
+    \midrule
+    -1.6 & -1.1 & {\numRP{0.574}{3}} & {\numRP{0.094}{3}} & $^{\numRP{+0.035}{3}}_{\numRP{-0.031}{3}}$ \\
+    -1.1 & -0.8 & 1.213 & 0.211 & $^{\num{+0.162}}_{\num{-0.162}}$ \\
+    -0.8 & -0.5 & 2.141 & 0.219 & $^{\num{+0.223}}_{\num{-0.123}}$ \\
+    -0.5 & -0.2 & 2.326 & 0.210 & $^{\num{+0.284}}_{\num{-0.214}}$ \\
+    -0.2 & +0.1 & 2.641 & 0.220 & $^{\num{+0.283}}_{\num{-0.233}}$ \\
+    +0.1 & +0.5 & 3.160 & 0.211 & $^{\num{+0.232}}_{\num{-0.172}}$ \\
+    +0.5 & +1.4 & 2.881 & 0.154 & $^{\num{+0.201}}_{\num{-0.301}}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{A selection of cross-section measurements. Note that
+    for numbers with asymmetric errors, the option 
+    \texttt{\Macro{sisetup}{}\{retain-explicit-plus\}} is used to stop 
+    \textsf{siunitx} from dropping the plus signs on the positive
+    errors. (although these tables look almost identical, the syntax used to 
+    create them is different - see Appendix~\ref{sec:raw-data}).}
+  \label{tab:rounding:xsect}
+\end{table}
+
+Cross-sections vs.\ $\eta$ are usually not so difficult to
+format, as the magnitudes of the numbers do not change much from one
+bin to the next. The situation is different for cross-sections as a
+function of \ET\ or $x$. Tables~\ref{tab:xsect-ET} and
+\ref{tab:xsect-x} show examples of such tables.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.4}
+  \subfloat[No special formatting and
+  \texttt{round-mode=figures}. This is the starting point for more
+  refined formatting.]{%
+    \input{cross_sections_charm-ET1}
+    \label{tab:xsect-ET1}}
+  \qquad
+  \subfloat[Numbers adjusted according to the recommendations. \texttt{round-mode=places}
+  is used for asymmetric errors (except the first row). Some judicious
+  use of \Macro{phantom} is applied to get improved, but not yet perfect, alignment.]{%
+    \input{cross_sections_charm-ET2}
+    \label{tab:xsect-ET2}}
+  \caption{Cross-section vs.\ $E_{T}$.}
+  \label{tab:xsect-ET}
+\end{table}
+
+\texttt{round-mode=figures} is in general best for cross-sections and
+their errors. A precision of 2 digits for the uncertainties is a good
+starting point, but will then have to be reduced to 1 digit in some cases. 
+For the cross-section values, more digits (typically 3) probably have to
+be specified and the precision of some values will again have to be
+adjusted by hand. In Table~\ref{tab:xsect-ET2} some of the rounding 
+is adjusted by hand so that the numbers conform to the
+rules. For the asymmetric errors, \texttt{round-mode=places} is used
+and the precision of each asymmetric uncertainty is then set by hand. 
+This works well if the cross-sections should all be shown with decimal
+points, but does not work if used to round a number such as
+\num{182}. Hence the first row uses \texttt{round-mode=figures}. Even
+with the tools offered by \Macro{siunitx} getting things exactly right
+is non-trivial.
+
+\begin{table}[htb]
+  \centering
+  \renewcommand{\arraystretch}{1.4}
+  \ifthenelse{\ATTeXLiveVersion < 2012}{%
+    \centering\fbox{\parbox{0.8\textwidth}{%
+      \textbf{This table does not appear here, as it uses features that were only 
+      properly implemented for \TeX\ Live 2012 and later.}
+    }}
+  }{%
+    \subfloat[No special formatting or rounding. Option
+      \textsf{scientific-notation=fixed} used.]{%
+      \label{tab:xsect-x1}%
+      \input{cross_sections_charm-x1}
+    }
+    \qquad
+    \subfloat[Several fixes including rescaled cross-section. Quite a
+      lot of \Macro{phantom} commands are applied to get alignment correct.]{%
+      \label{tab:xsect-x2}%
+      \input{cross_sections_charm-x2}
+    }
+  }
+  \caption{Cross-section vs.\ $x$.}
+  \label{tab:xsect-x}
+\end{table}
+
+Table~\ref{tab:xsect-x} is probably the most challenging to format
+correctly, as the bin boundaries also vary by several orders of
+magnitude. Table~\ref{tab:xsect-x1} gives the numbers with the option
+\textsf{scientific-notation=fixed} to illustrate the problem of what
+the table would look like if the cross-sections are output in
+\si{\pb}.  In Table~\ref{tab:xsect-x2}, the exponential format of
+numbers is used to rescale the cross-section from \si{\pb} to
+\si{\nb}.  \Macro{phantom} had to be used in more places than we
+really like in order to get the final alignment
+correct. Investigations are ongoing to see if this can be improved.
+
+%-------------------------------------------------------------------------------
+\section*{History}
+%-------------------------------------------------------------------------------
+
+\begin{description}
+\item[2014-11-25: Ian Brock] First version of the document released.
+\end{description}
+
+%-------------------------------------------------------------------------------
+% Print bibliography using biblatex
+\printbibliography
+%-------------------------------------------------------------------------------
+% Old style bibtex bibliography
+% \bibliographystyle{../../bibtex/bst/atlasBibStyleWithTitle}
+% \bibliography{atlas_bibtex,atlas_biblatex}
+
+\appendix
+\section{\LaTeX\ code for tables}
+\label{sec:raw-data}
+
+This appendix gives the \LaTeX\ code including the raw data used for 
+Tables~\ref{tab:rounding:xsect}, 
+\ref{tab:xsect-ET} and \ref{tab:xsect-x}.
+These files for Tables~\ref{tab:xsect-ET} and \ref{tab:xsect-x} can also be 
+found in the \texttt{doc/atlas\_tables} directory of the \texttt{atlaslatex} package.
+The options given here correspond to those that are need for \TeX\ Live 2012 and later.
+See the code for the appropriate options for earlier versions.
+
+\subsection{Table~\protect\ref{tab:rounding:xsect}}
+\begin{verbatim}
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.4}
+\sisetup{retain-explicit-plus}
+\sisetup{round-mode = places}
+\begin{tabular}{%
+S@{\,:\,}S
+r@{\,}@{$\pm$}@{\,}l@{\,}l
+}
+\toprule
+\multicolumn{2}{c}{\etajet} & \multicolumn{3}{c}{\diffetab} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{[\si{\pico\barn}]} \\
+\midrule
+{\num{-1.6}} & -1.1 & \numRP{0.574}{3} & \num[round-precision=3]{0.094} & 
+$^{\numRP{+0.035}{3}}_{\numRP{-0.031}{3}}$ \\
+{\num{-1.1}} & -0.8 & \numRP{1.213}{2} & \num[round-precision=2]{0.211} & 
+$^{\numRP{+0.162}{2}}_{\numRP{-0.162}{2}}$ \\
+{\num{-0.8}} & -0.5 & \numRP{2.141}{2} & \num[round-precision=2]{0.219} & 
+$^{\numRP{+0.223}{2}}_{\numRP{-0.123}{2}}$ \\
+{\num{-0.5}} & -0.2 & \numRP{2.326}{2} & \num[round-precision=2]{0.210} & 
+$^{\numRP{+0.284}{2}}_{\numRP{-0.214}{2}}$ \\
+{\num{-0.2}} & +0.1 & \numRP{2.641}{2} & \num[round-precision=2]{0.220} & 
+$^{\numRP{+0.283}{2}}_{\numRP{-0.233}{2}}$ \\
+{\num{+0.1}} & +0.5 & \numRP{3.160}{2} & \num[round-precision=2]{0.211} & 
+$^{\numRP{+0.232}{2}}_{\numRP{-0.172}{2}}$ \\
+{\num{+0.5}} & +1.4 & \numRP{2.881}{2} & \num[round-precision=2]{0.154} & 
+$^{\numRP{+0.201}{2}}_{\numRP{-0.301}{2}}$ \\
+\bottomrule
+\end{tabular}
+%
+\quad
+%
+\sisetup{round-mode = places, round-precision = 2}
+\begin{tabular}{%
+S[table-format=3.2, table-number-alignment = right]@{\,:\,}S
+S[round-mode = places, round-precision = 2,
+table-format = 1.3, table-number-alignment = right]
+@{$\,\pm\,$}
+S[round-mode = places, round-precision = 2,
+table-format = 1.3, table-number-alignment = left]
+@{\,}l
+}
+\toprule
+\multicolumn{2}{c}{\etajet} & \multicolumn{3}{c}{\diffetab} \\
+\multicolumn{2}{c}{} & \multicolumn{3}{c}{[\si{\pico\barn}]} \\
+\midrule
+-1.6 & -1.1 & {\numRP{0.574}{3}} & {\numRP{0.094}{3}} & 
+$^{\numRP{+0.035}{3}}_{\numRP{-0.031}{3}}$ \\
+-1.1 & -0.8 & 1.213 & 0.211 & $^{\num{+0.162}}_{\num{-0.162}}$ \\
+-0.8 & -0.5 & 2.141 & 0.219 & $^{\num{+0.223}}_{\num{-0.123}}$ \\
+-0.5 & -0.2 & 2.326 & 0.210 & $^{\num{+0.284}}_{\num{-0.214}}$ \\
+-0.2 & +0.1 & 2.641 & 0.220 & $^{\num{+0.283}}_{\num{-0.233}}$ \\
++0.1 & +0.5 & 3.160 & 0.211 & $^{\num{+0.232}}_{\num{-0.172}}$ \\
++0.5 & +1.4 & 2.881 & 0.154 & $^{\num{+0.201}}_{\num{-0.301}}$ \\
+\bottomrule
+\end{tabular}
+%
+\caption{A selection of cross-section measurements! Note the
+use of \Macro{sisetup} to keep the plus signs on the positive
+errors.}
+\label{tab:rounding:xsect}
+\end{table}
+\end{verbatim}
+
+\subsection{Table~\protect\ref{tab:xsect-ET}}
+The files are: \texttt{cross\_sections\_charm-ET1.tex} and 
+\texttt{cross\_sections\_charm-ET2.tex}:
+{\scriptsize
+  \verbatiminput{cross_sections_charm-ET1.tex}
+}
+{\scriptsize
+  \verbatiminput{cross_sections_charm-ET2.tex}
+}
+
+\subsection{Table~\protect\ref{tab:xsect-x}}
+
+The files are: \texttt{cross\_sections\_charm-x1.tex} and 
+\texttt{cross\_sections\_charm-x2.tex}:
+{\scriptsize
+  \verbatiminput{cross_sections_charm-x1.tex}
+}
+{\tiny
+  \verbatiminput{cross_sections_charm-x2.tex}
+}
+
+\end{document}

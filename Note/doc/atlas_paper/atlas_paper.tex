@@ -1,0 +1,592 @@
+%-------------------------------------------------------------------------------
+% This is a template ATLAS Paper that contains suggestions and hints on how
+% to get your paper draft into a form that minimises the amount of work needed
+% to get it approved by the collaboration - assuming that the physics is OK!
+%-------------------------------------------------------------------------------
+% Specify where ATLAS LaTeX style files can be found.
+\newcommand*{\ATLASLATEXPATH}{../../latex/}
+%-------------------------------------------------------------------------------
+\documentclass[PAPER,UKenglish,texlive=2016]{\ATLASLATEXPATH atlasdoc}
+
+% Standard packages that can and should be used in ATLAS papers
+% Use biblatex and biber for the bibliography
+\usepackage[backend=biber]{\ATLASLATEXPATH atlaspackage}
+% Style file with biblatex options for ATLAS documents
+\usepackage{\ATLASLATEXPATH atlasbiblatex}
+
+% Useful macros
+\usepackage{\ATLASLATEXPATH atlasphysics}
+
+% Files with references in BibTeX format and biblatex style options
+\addbibresource{atlas_paper.bib}
+\addbibresource{../../bibtex/bib/ATLAS.bib}
+\addbibresource{../atlas_latex.bib}
+
+% Paths for figures - do not forget the / at the end of the directory name
+\graphicspath{{../../logos/}{figures/}}
+
+%-------------------------------------------------------------------------------
+% Generic document information
+%-------------------------------------------------------------------------------
+% Set author and title for the PDF file
+\hypersetup{pdftitle={ATLAS paper template},pdfauthor={ATLAS Publication Committee}}
+
+\AtlasTitle{General guidelines for ATLAS papers}
+
+\author{ATLAS Publication Committee}
+
+%\AtlasVersion{1.0}
+
+\AtlasAbstract{%
+  This document gives general guidelines on how an ATLAS paper should be structured
+  and what authors should pay attention to.
+  It is part of the ATLAS \LaTeX\ package which can be downloaded from
+  Publication Committee TWiki pages. 
+  The technical details about how to use the
+  ATLAS \LaTeX\ style files are included in a separate document.
+
+  This document was generated using version \ATPackageVersion\ of the ATLAS \LaTeX\ package.
+  The \TeX\ Live version is set to \ATTeXLiveVersion.
+  It uses the option \Option{atlasstyle}, which implies that the standard ATLAS preprint style is used.
+}
+
+%-------------------------------------------------------------------------------
+% Extra definitions - it is usually better to collect these in a separate file
+%-------------------------------------------------------------------------------
+% Shorthand for \phantom to use in tables
+\newcommand*{\pho}{\phantom{0}}
+\newcommand{\BibTeX}{\textsc{Bib\TeX}}
+\newcommand{\Macro}[1]{\texttt{\textbackslash #1}\xspace}
+\newcommand{\Option}[1]{\textsf{#1}\xspace}
+\newcommand{\Package}[1]{\texttt{#1}\xspace}
+\newcommand{\File}[1]{\texttt{#1}\xspace}
+
+
+%-------------------------------------------------------------------------------
+% This is where the document really begins
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\clearpage
+
+
+%-------------------------------------------------------------------------------
+\section{Front page}
+\label{sec:front}
+%-------------------------------------------------------------------------------
+
+Before we get to the meat of the document, a few remarks about the paper front page.
+
+
+%-------------------------------------------------------------------------------
+\subsection{Title} 
+\label{sec:title}
+%-------------------------------------------------------------------------------
+
+The title should be concise, clear and descriptive, and should include the word \enquote{ATLAS}.
+
+
+%-------------------------------------------------------------------------------
+\subsection{Author list}
+\label{sec:author}
+%-------------------------------------------------------------------------------
+
+The author list will be provided by the Authorship Committee and Physics Office. 
+It will be created by the Physics Office at the time of the first draft announcement by PubCom, 
+and added to the CDS record for the paper as a separate document from the paper itself.
+Requests for exceptional authorship or for removal of names should be made to the Spokesperson and Authorship Committee while the first draft is circulating.
+The author list will be archived when the second draft announcement is made by Publication Committee, 
+and again added to the CDS record as a separate document from the paper. 
+The front page of the paper should name \enquote{The ATLAS Collaboration} as the author.
+
+
+%-------------------------------------------------------------------------------
+\subsection{Abstract}
+\label{sec:abstract}
+%-------------------------------------------------------------------------------
+
+The abstract should also be clear, descriptive and concise. 
+It should consist of a single paragraph, occupying no more than half a page. 
+It should stand on its own and the main text of the paper should not depend on it. 
+The abstract should state what was measured; where the measurement was made and with what dataset / luminosity;
+what method was used; 
+what are the primary results and main conclusions. 
+Citations, footnotes, references etc.\ should be avoided in the abstract. 
+If only Monte Carlo data are used in the publication, this fact should be stated explicitly in the abstract.  
+
+
+\subsubsection*{Example of a Search Analysis Abstract}
+
+A search for the Standard Model Higgs boson in the two photon decay channel is reported, 
+using \SI{1.08}{\per\fb} of proton--proton collision data at a centre-of-mass energy of \SI{7}{\TeV} recorded by the ATLAS detector.
+No significant excess is observed in the investigated mass range of \SIrange{110}{150}{\GeV}. 
+Upper limits on the cross-section times branching ratio of between 2.0 and 5.8 times the Standard Model prediction are derived for this mass range.
+
+\noindent(From \enquote{Search for the Standard Model Higgs boson in the two photon decay channel with the ATLAS detector at the LHC})
+
+\subsubsection*{Example of a Standard Model Measurement Analysis Abstract}
+
+This Letter presents a measurement of the $WW$ production cross section in $\sqrt{s} = \SI{7}{\TeV}$ $pp$ collisions by the ATLAS experiment, using \SI{34}{\per\pb} of integrated luminosity produced by the Large Hadron Collider at CERN. Selecting events with two isolated leptons, each either an electron or a muon, 8 candidate events are observed with an expected background of $1.7 \pm 0.6$ events.
+The measured cross section is 
+\ifthenelse{\ATTeXLiveVersion < 2011}{%
+$(41^{+20}_{-16}(\text{stat.})\pm 5(\text{syst.})\pm 1(\text{lumi.}))\;\si{\pb}$,
+}{%
+\SI[parse-numbers=false]{(41^{+20}_{-16}(\text{stat.})\pm 5(\text{syst.})\pm 1(\text{lumi.}))}{\pb},
+}
+which is consistent with the standard model prediction of \SI{44(3)}{\pb} calculated at next-to-leading order in QCD. 
+In fact, the ATLAS convention is to write this as
+\ifthenelse{\ATTeXLiveVersion < 2011}{%
+\SI[trapambigerr=false]{44(3)}{\pb}, i.e.\ without the enclosing parentheses.
+}{%
+\SI[multi-part-units=single]{44(3)}{\pb}, i.e.\ without the enclosing parentheses.
+}
+
+\noindent(From \enquote{Measurement of the WW cross section in $\sqrt{s} = \SI{7}{\TeV}$ $pp$ collisions with ATLAS})
+
+
+%-------------------------------------------------------------------------------
+\section{Introduction}
+\label{sec:intro}
+%-------------------------------------------------------------------------------
+
+This should be fairly brief. 
+State the measurement being made, motivate its importance experimentally and theoretically.
+It is considered bad form to point out being the first to publish something as a motivation.
+Include a summary of what has already been published on this subject,
+as well as the most appropriate theory references.
+For a longer paper, give a brief outline of the paper, especially if the structure is unusual.
+Even for a long paper, the introduction should generally not exceed one page.
+
+Your first action before embarking on writing a paper should be to
+read the ATLAS Publication Policy~\cite{publication-policy}, available
+from the web pages of the Publication Committee. Chapter~3 of this
+document details the refereeing and approval procedures that you will
+need to follow; Chapter~4 gives information on the style.
+
+At some point during the writing of an ATLAS paper, you should decide what journal it will be submitted to.
+Please keep in mind that each journal makes specific demands on length and style.
+Most journals use regular capitalisation for titles 
+(i.e.\ capitalise the first word and all proper nouns, 
+e.g.\ \enquote{The search for large extra dimensions}). 
+The notable exception is Physical Review Letters, which capitalises the
+first word and all other important words,
+e.g.\ \enquote{The Search for Large Extra Dimensions}.
+
+This document can be found on the web pages of the ATLAS Publication Committee
+and in the \texttt{atlaslatex} package. 
+The Publication Committee provides standard texts giving examples
+for the description of the ATLAS detector, and the appropriate references,
+as well as other text snippets that may be useful to avoid too much use of ATLAS jargon.
+The ATLAS detector description is included in Appendix~\ref{app:atlasdet}.
+Text snippets can be found on the web pages~\cite{pubcom-snippet}.
+Comments and/or suggestions on improvements are very welcome and
+should be given to the Publication Committee.
+
+The \texttt{atlasphysics.sty} style file contains a set of particles,
+reactions, etc.\ that may be useful. For example, the missing-$E_{\text{T}}$
+symbol (\met{}) is defined there. 
+A separate document~\cite{atlas-physics}
+contains a list of the commands in \texttt{atlasphysics.sty}.
+
+
+%-------------------------------------------------------------------------------
+\section{Theory}
+\label{sec:theory}
+%-------------------------------------------------------------------------------
+
+Sometimes combined with the introduction in shorter papers. 
+This should be a brief overview of the theory relevant for this paper, with proper referencing.
+This is a good place to define important quantities which will be used later.
+State how the measurement of interest is actually performed, and how the parameters are extracted from the data.
+If quantities are extracted with a fit to the data, describe the fit procedure;
+if a limit is set, state what kind of limit-setting technique is used.
+If these explanations need to be a bit longer, separate sections may be appropriate.
+
+Give here a brief explanation of the theory relevant for this paper,
+with proper referencing. Use, for example,
+\verb|\cite{Glashow:1961tr,Weinberg:1967tq,sm_salam}| to cite the
+Standard Model~\cite{Glashow:1961tr,Weinberg:1967tq,sm_salam}.
+
+Define important quantities that will be used later.
+State how the measurement of interest is actually performed, and how parameters are
+extracted from the data.
+If quantities are extracted with a fit to the data, describe the fit procedure.
+If the explanation needs to be a bit longer, a separate section may be appropriate.
+
+
+%-------------------------------------------------------------------------------
+\section{Experimental setup}
+\label{sec:atlas}
+%-------------------------------------------------------------------------------
+
+If necessary for your analysis, describe a subdetector in more detail.
+
+The section on the experimental setup should also describe the dataset:
+when were the data taken, under what special circumstances (if any),
+and what was the integrated luminosity.
+
+Examples of descriptions can be found in Appendix~\ref{app:atlasdet}.
+
+
+%-------------------------------------------------------------------------------
+\section{Monte Carlo}
+\label{sec:MC}
+%-------------------------------------------------------------------------------
+
+All Monte Carlo generators and calculators used must be clearly named with the full version number and reference.
+A brief description may be useful if it is a less well known generator.
+It is usually necessary to say to what order it calculates (LO, NLO, NNLO...) 
+and to specify any corrections, tunings or special parameter settings.
+The PDF sets used should be listed, also with the full version numbers and references.
+Statistics should be given if the number of simulated events gives rise to a non-negligible uncertainty.
+
+
+%-------------------------------------------------------------------------------
+\section{Event selection}
+\label{sec:selection}
+%-------------------------------------------------------------------------------
+
+List the trigger and offline selection criteria, and number of events passing.
+
+
+%-------------------------------------------------------------------------------
+\section{Data characteristics}
+\label{sec:control}
+%-------------------------------------------------------------------------------
+
+Discuss here the characteristics of the data, in terms of primary quantities and backgrounds.
+
+
+%-------------------------------------------------------------------------------
+\section{Systematic uncertainties}
+\label{sec:syst}
+%-------------------------------------------------------------------------------
+
+Give a detailed list of systematic uncertainties, the method by which they were obtained,
+and a justification of the resulting values.
+Use ``systematic uncertainty'' instead of ``systematic error'.
+The latter sounds as if you have made a mistake systematically.
+
+
+%-------------------------------------------------------------------------------
+\section{Results}
+\label{sec:result}
+%-------------------------------------------------------------------------------
+
+State the results without interpretations here.
+
+
+%-------------------------------------------------------------------------------
+\section{Discussion}
+\label{sec:discussion}
+%-------------------------------------------------------------------------------
+
+Put the results into the context of the theory or a model.
+If the results lead to exclusion plots, make sure that it is clear which region on the plot is excluded.
+Please also make sure that statistical interpretations and limit setting are done 
+following the current ATLAS Statistics Tools and Guidelines
+
+%-------------------------------------------------------------------------------
+\section{Summary and conclusion}
+\label{sec:summary}
+%-------------------------------------------------------------------------------
+
+
+Please make sure that there is a conclusion!
+The concluding statements should reflect what is in the abstract.
+Reiterate the main points of the paper and the primary results and conclusions.
+
+Note that many readers look mostly at the title, abstract and conclusion.
+The conclusion should be interesting enough to make them want to read the whole paper.
+It is not good style just to repeat the abstract.
+If your paper is short and only has one result quoted at the end of the paper,
+then you should consider whether conclusions are necessary.
+
+Try not to end your conclusions with a sentence such as
+\enquote{All the results in this paper are in good agreement with the Standard Model,
+the current world average and recent measurements by other experiments.}
+This might lead a referee (internal or external) to wonder why it is worth publishing this paper!
+
+Note that all figures and tables should be output before the start of the
+\enquote{Summary and conclusion}.
+This can be achieved using the macro \Macro{FloatBarrier} that is part of the 
+\Package{placeins} package.
+
+
+%-------------------------------------------------------------------------------
+\section*{Acknowledgements}
+\label{sec:acknowldge}
+%-------------------------------------------------------------------------------
+
+A standard template for the acknowledgements is available on the
+web pages of the Publication Committee.
+See reference~\cite{publication-policy} for the URL. 
+
+The acknowledgements should be in an unnumbered section.
+
+
+%-------------------------------------------------------------------------------
+\clearpage
+\appendix
+\part*{Appendices}
+\addcontentsline{toc}{part}{Appendices}
+%-------------------------------------------------------------------------------
+
+In a paper, an appendix is used for technical details that would otherwise disturb the flow of the paper.
+Such an appendix should be printed before the Bibliography.
+In an ATLAS paper, auxiliary plots and tables that are supposed to be made public 
+should be collected in an appendix that has the title \enquote{Auxiliary material}.
+This appendix should be printed after the Bibliography.
+
+In an ATLAS note, use the appendices to include all the technical details of your work
+that are relevant for the ATLAS Collaboration only (e.g.\ dataset details, software release used).
+
+Use the following commands to start the Appendices section:
+\begin{verbatim}
+   \clearpage
+   \appendix
+   \part*{Appendices}
+   \addcontentsline{toc}{part}{Appendices}
+\end{verbatim}
+
+In this document the appendices contain some general remarks on the style to use in ATLAS papers.
+More technical details on how to use the ATLAS \LaTeX\ templates to help you follow 
+these recommendations can be found in other documents:
+\begin{itemize}
+\item ATLAS style guide~\cite{atlas-style}.
+\item Users guide to the ATLAS \LaTeX\ package~\cite{atlas-latex};
+\item Guide to references and \BibTeX\ in ATLAS documents~\cite{atlas-bibtex};
+\item ATLAS physics symbols~\cite{atlas-physics};
+\item Guide to formatting tables for ATLAS documents~\cite{atlas-tables};
+\item Rounding – ATLAS Recommendations~\cite{atlas-rounding};
+\item Report of the ATLAS figures task force~\cite{atlas-figures}.
+\end{itemize}
+
+ATLAS papers should use the \Option{atlasstyle} option with the class \Package{atlasdoc}.
+The default fonts for ATLAS documents are \Package{newtxtext} and \Package{newtxmath}.
+These are more modern variants of the package \Package{txfonts} that has been used in
+ATLAS documents in the past.
+However, arXiv currently uses an older version of \TeX\ Live (2011) that does not include the
+\Package{newtx} fonts. Hence, in ATLAS papers, please add the option \Option{txfonts} to \Package{atlasdoc}.
+
+%-------------------------------------------------------------------------------
+\section{General style}
+\label{sec:english}
+%-------------------------------------------------------------------------------
+
+We recommend the use of British English. However, whatever you decide
+to choose, be consistent throughout the paper. For much more detailed
+information on writing, spelling and typographic style, etc. please
+see the ATLAS Style Guide~\cite{atlas-style}. 
+The ATLAS Glossary~\cite{atlas-glossary} contains a list of ATLAS detector acronyms.
+
+Use italics for emphasis sparingly: too many italicised words defeat
+their purpose. When you do italicise a word, really italicise it: do
+not use math mode! Note the difference between \emph{per se}
+(\verb|\emph{per se}|) and $per se$ (\verb+$per se$+). Abbreviations
+like i.e., e.g., etc., and et al.\ should \emph{not} be italicised!
+For program names we recommend to use small capitals:
+\verb|\textsc{Pythia}}| produces \textsc{Pythia}.
+
+
+%-------------------------------------------------------------------------------
+\section{Tables}
+\label{sec:table}
+%-------------------------------------------------------------------------------
+
+All tables appearing in the paper must be mentioned in the text. The
+tables should appear in the same order as mentioned in the text. Do
+not abbreviate the word \enquote{Table}. Capitalise the first word of any
+row or column heading. Label all rows/columns, including units if
+appropriate. Units are given in brackets, e.g.\ \enquote{Energy [\si{\GeV}]}.
+Horizontal and vertical lines should be kept to a minimum and only used 
+as necessary to make the table entries clear.
+The table caption appears below the table.
+Any symbols/variables used in the table must be defined in the
+caption.  Always use labels to refer to tables and figures. Note that
+the label must be included in the body of the caption.
+
+If table entries include uncertainties, the entries should be aligned
+on the \enquote{$\pm$} sign. Numbers should be aligned on the decimal
+point. Otherwise, column entries should be left-aligned.
+
+More details on the style to be followed can be found in Section~3.4 of the \enquote{ATLAS Style Guide}~\cite{atlas-style}.
+Example tables and hints on how to obtain the desired format can be found in a separate document~\cite{atlas-tables}.
+The note on rounding~\cite{atlas-rounding} contains more examples on how to format tables.
+
+
+%-------------------------------------------------------------------------------
+\section{Figures}
+\label{sec:figure}
+%-------------------------------------------------------------------------------
+
+All figures appearing in the paper must be mentioned in the text.
+The figures should appear in the same order as mentioned in the text.
+At the beginning of a sentence, use the full word \enquote{Figure}.
+Within a sentence, the abbreviation \enquote{Fig.} may be used.
+If a figure appears in two or more parts, refer to it as
+\enquote{Fig.~1(a)} and \enquote{Fig.~1(b)}. Both \enquote{(a)} and \enquote{(b)} should
+appear in the text, in the figure, and in the caption.
+The word \enquote{ATLAS} (or \enquote{ATLAS Preliminary}, if appropriate) should
+appear prominently somewhere in the figure. This becomes important when
+the figure is copied and shown out of context. If appropriate, it
+is useful to include information about the luminosity corresponding
+to a figure.
+
+All axes must be labelled, including units (i.e.\ \enquote{Energy [\si{\GeV}]}).
+The vertical axis units should specify the bin width, unless
+arbitrarily normalized. A legend box explaining all plotting symbols
+must appear somewhere in the figure.
+
+The caption should be placed below the figure.  All lines, all
+plotting symbols, and all variables used in the figure must be defined
+in the caption. Do not refer to any characteristic that is not
+distinguishable in black-and-white.
+If relevant, the normalisation method of the plot should be specified.
+
+More details on the style to be followed can be found in Section~3.3 of the \enquote{ATLAS Style Guide}~\cite{atlas-style}.
+The Publication Committee has a root macro to create figures in
+ATLAS style, it can be found on the Publication Committee web pages~\cite{atlas-rootstyle}.
+Use this style consistently throughout the paper.
+
+
+%-------------------------------------------------------------------------------
+\section{References}
+\label{sec:refs}
+%-------------------------------------------------------------------------------
+
+Only cite permanent, publicly available, or ATLAS approved references.
+Private references, not available to the general public, should be
+avoided. Caution should be used when referring to ATLAS notes.
+Only reference approved notes. Do not reference COM or INT notes,
+as these are not available outside ATLAS.
+
+Whenever possible, cite the article's journal rather than its preprint number. 
+If possible, the arXiv number should be given in addition.
+Always double check references when copying them from another source.
+
+Referencing styles are journal-dependent.
+This is not a problem if the ATLAS preprint style is used,
+as the journals will adapt the document to their style.
+
+For further information on \BibTeX\ and on the standard ATLAS style for referencing, 
+see the \enquote{ATLAS \BibTeX\ Guide}~\cite{atlas-bibtex}.
+More details on what to pay attention to can be found in Section~3.6 of the \enquote{ATLAS Style Guide}~\cite{atlas-style}.
+
+
+%-------------------------------------------------------------------------------
+\section{Remarks on units and symbols}
+\label{sec:units}
+%-------------------------------------------------------------------------------
+
+It is highly recommended to use a units package to format your units properly.
+The package \texttt{siunitx} works very well and is the package of choice.
+Alternatives include \texttt{units} and \texttt{hepunits},
+which is based on \texttt{SIunits}.
+
+If you use a units package, it automatically set SI units in an upright font
+and leaves a small space between
+the value and the units (e.g.\ \SI{12}{\mm}). 
+In addition, it makes sure the value and unit end up on the same line: \verb|\SI{12}{\mm}|.
+Natural units, where $c=\hbar=1$, should be used for all
+ATLAS publications.
+\ifthenelse{\ATTeXLiveVersion < 2011}{%
+Masses are therefore in \si{\GeV}, not \si[per=slash]{\GeV\per\clight}.
+}{%
+Masses are therefore in \si{\GeV}, not \si[per-mode=symbol]{\GeV\per\clight}.
+}
+Use math mode for all symbols (e.g. use $c$ (\verb|$c$|) rather than simply c). 
+Momentum should be in lower case \verb+$p$+. 
+Transverse momentum is a lower case $p$ with an upper case roman $\text{T}$ subscript: 
+\verb|\pT| produces \pT.
+Energy is an upper case \verb+$E$+, \verb+\ET+ produces \ET.  
+Use \verb|\mathcal| mode for luminosity $\mathcal{L}$ or aplanarity
+$\mathcal{A}$.
+%Use \verb|\mathscr| mode for luminosity $\mathscr{L}$ $\mathcal{L}$ or aplanarity
+%$\mathscr{A}$ $\mathcal{A}$, including the package \verb|mathrsfs.sty|.
+
+Trigonometric functions should be in roman type. Natural logarithm
+should be ln and log base 10 is log.  When in math mode, use
+\verb+$\ln$, $\sin$,+ etc. We recommend to specify the base of the
+logarithm: \verb+$\log_{10}$+.
+
+If your note makes use of cones, for example cone-jets, explain that
+these cones are constructed in $\eta$-$\phi$ space, and define $\eta$.
+
+Add the word \emph{events} as the unit when quoting the number of
+events: \enquote{The resulting background is $4.0 \pm 1.3$ events.}.  The
+number of expected events should be written as $N_{\text{pred}}$ rather
+than $N_{\text{exp}}$, since the latter could also mean experimental.
+
+For particle names and symbols, ATLAS uses the standards of the
+Particle Data Book. Intermediate vector bosons should be called
+\emph{W boson(s)} and \emph{Z boson(s)}, not just \emph{W's} or
+\emph{Ws}. The Z boson should not have a superscript of 0. W without
+the word boson attached may be used in \emph{W pair production}, and
+similar phrases.  Other particle names should be spelled out when used
+in a sentence: muon(s), electron(s), tau lepton(s). \emph{Top quark}
+should be used instead of \emph{top} in most places: 
+say \enquote{top-quark mass} instead of \enquote{top mass}.
+Top quark and bottom quark may be shortened to $t$ quark and $b$ quark. 
+The neutrino symbol $\nu$ should not have any subscripts, unless necessary for
+understanding.
+For the \Jpsi{} use the command \verb+\Jpsi+ from 
+\texttt{atlasphysics.sty}: it will produce a lower case $\psi$.
+
+When in doubt, use the PDG style.
+
+
+%-------------------------------------------------------------------------------
+\section{The \texttt{atlasdoc} class}
+\label{sec:atlasdoc}
+%-------------------------------------------------------------------------------
+
+This paper has been typeset using the \texttt{atlasdoc.cls} class.
+This class implements the ATLAS template and can be used for papers, preprints,
+notes. The class is available from the web pages of the
+Publication Committee and from SVN.
+It also contains these guidelines and related files.
+
+Details on how to use the templates can be found in a separate document
+\texttt{atlas\_latex.pdf}~\cite{atlas-latex}.
+
+The style file \File{atlaspackage.sty} loads packages that are usually used in documents.
+Several options exist to turn on or off the loading of various packages.
+
+The style file \texttt{atlasphysics.sty} defines a lot of useful
+macros for particles and more. See the separate document
+\texttt{atlas\_physics.pdf}~\cite{atlas-physics} for details.
+
+
+%-------------------------------------------------------------------------------
+% Bibliography
+%-------------------------------------------------------------------------------
+\printbibliography
+% This document uses biblatex and biber to process the bibliography.
+% If you want to use BibTeX you need to use the syntax below.
+% \bibliographystyle{../atlasBibStyleWoTitle}
+% \bibliography{atlas_paper,../../bibtex/bib/ATLAS,../atlas_latex.bib}
+
+
+%-------------------------------------------------------------------------------
+\clearpage
+\appendix
+\part*{Auxiliary material}
+\addcontentsline{toc}{part}{Auxiliary material}
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+\section{ATLAS detector descriptions}
+\label{app:atlasdet}
+%-------------------------------------------------------------------------------
+
+These descriptions can be found in the file \File{templates/atlas-detector.tex}.
+
+\input{../../template/atlas-detector}
+
+
+\end{document}

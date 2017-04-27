@@ -1,0 +1,96 @@
+% The following macros are usually used atlas-documemnt-metadata.tex
+% They are defined here so that this file does not have to be changed 
+% when adapting an ATLAS document for journal submission
+
+\newcommand{\AtlasTitleText}{ATLAS title: use \textbackslash AtlasTitle to set it}
+\newcommand{\AtlasTitle}[1]{%}
+  %\def\@title{#1}%
+  \renewcommand{\AtlasTitleText}{#1}%
+}
+% \def\@author{The ATLAS Collaboration in atlasmetadefs}
+
+% Draft version
+\def\@draftversion{}
+\newcommand*{\AtlasVersion}[1]{\def\@draftversion{#1}}
+\newcommand*{\draftversion}[1]{\def\@draftversion{#1}}
+
+% ATLAS reference code - empty by default
+\def\@refcode{}
+\newcommand*{\AtlasRefCode}[1]{\def\@refcode{#1}}
+
+% ATLAS note number
+\def\@atlasnote{}
+\newcommand*{\AtlasNote}[1]{\def\@atlasnote{#1}}
+
+% Submission details
+\def\@journal{}
+\newcommand*{\AtlasJournal}[1]{\def\@journal{#1}}
+%\newcommand*{\journal}[1]{\def\@journal{#1}}
+
+% Preprint
+\def\ADOC@preprintnumber{}
+\newcommand*{\PreprintIdNumber}[1]{\def\ADOC@preprintnumber{#1}}
+
+% Journal
+\def\ADOC@journalref{}
+\newcommand*{\AtlasJournalRef}[1]{\def\ADOC@journalref{#1}}
+
+% DOI
+\def\ADOC@doi{}
+\newcommand*{\AtlasDOI}[1]{\def\ADOC@doi{#1}}
+
+% arXiv
+\def\AtlasArXivId{}
+\def\AtlasArXivURL{}
+\newcommand*{\arXivId}[1]{\def\AtlasArXivId{#1}\def\AtlasArXivURL{http://arXiv.org/abs/#1}}
+\newcommand*{\AtlasArXivCat}{[hep-ex]}
+
+% HEP Data
+\def\AtlasHepDataRecord{}
+\newcommand*{\HepDataRecord}[1]{\def\AtlasHepDataRecord{http://hepdata.cedar.ac.uk/view/ins#1}}
+
+% Abstract text
+\def\AtlasAbstractText{}
+\newcommand{\AtlasAbstract}[1]{\def\AtlasAbstractText{#1}}
+\newcommand{\abstracttext}[1]{\def\AtlasAbstractText{#1}}
+
+% Multiple corresponding editors
+\def\ACOV@Editors{} % Corresponding editor name & corresponding.editor@email \\ }
+\newcommand{\AtlasCoverEditor}[2]{%
+  \g@addto@macro\ACOV@Editors{%
+    #1 & (\texttt{#2}) \\
+  }%
+}
+
+\newcommand{\AtlasCoverCommentsDeadline}[1]{\def\ACOV@CommentsDeadline{#1}}
+\newcommand{\AtlasCoverAnalysisTeam}[1]{\def\ACOV@AnalysisTeam{#1}}
+\newcommand{\AtlasCoverEgroupEditors}[1]{\def\ACOV@EgroupEditors{#1}}
+\newcommand{\AtlasCoverEgroupEdBoard}[1]{\def\ACOV@EgroupEdBoard{#1}}
+
+% EdBoard members
+\def\ACOV@EdBoardMembers{}
+\newcommand{\AtlasCoverEdBoardMember}[1]{%
+  \g@addto@macro\ACOV@EdBoardMembers{%
+    #1 \\
+  }
+}
+
+% Readers (for PUB notes)
+\def\ACOV@ReaderMembers{}
+\newcommand{\AtlasCoverReaderMember}[1]{%
+  \g@addto@macro\ACOV@ReaderMembers{%
+    #1 \\
+  }
+}
+
+\newcommand{\AtlasCoverTwikiURL}[1]{\def\ACOV@TwikiURL{#1}}
+
+% Supporting note list
+\def\ACOV@Notes{}
+\newcommand{\AtlasCoverSupportingNote}[2]{%
+  \g@addto@macro\ACOV@Notes{%
+    #1 & \url{#2} \\
+  }
+}
+
+\endinput

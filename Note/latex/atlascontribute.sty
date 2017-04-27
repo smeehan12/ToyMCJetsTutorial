@@ -1,0 +1,83 @@
+%-------------------------------------------------------------------------------
+% List of contributions to an ATLAS analysis
+%
+% See ChangeLog or SVN log for history of changes.
+% Responsible: Ian Brock (ian.brock@cern.ch)
+%-------------------------------------------------------------------------------
+\ProvidesPackage{latex/atlascontribute}[2017/03/31 v.03-00-03 ATLAS analysis contributions]
+\NeedsTeXFormat{LaTeX2e}
+
+% Use kvoptions package to set options
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+  family=ACTR,
+  prefix=ACTR@
+}
+\DeclareBoolOption[false]{xtab}
+\DeclareBoolOption[true]{authblk}
+\ProcessKeyvalOptions*
+
+%\let\ifACTR@xtab\iffalse
+%\DeclareOption{xtab}{\let\ifACTR@xtab\iftrue}
+%\let\ifACTR@authblk\iftrue
+%\DeclareOption{noauthblk}{\let\ifACTR@authblk\iffalse}
+%
+%\ProcessOptions\relax
+
+% Include array package so \raggedright works
+\RequirePackage{array}
+% Include booktabs package to get a nicer table
+\RequirePackage{booktabs}
+
+% Include xtab package if necessary
+\ifACTR@xtab \RequirePackage{xtab} \fi
+
+% If multiple authors/affiliations are needed, use the authblk package
+\ifACTR@authblk
+  \RequirePackage{authblk}
+  \renewcommand\Authands{, } % avoid ``. and'' for last author
+  \renewcommand\Affilfont{\itshape\small} % affiliation formatting
+\fi
+
+% Analysis contributors: Name, Contributions
+\def\ACTR@Contributors{}
+\newcommand{\AtlasContributor}[2]{%
+  \g@addto@macro\ACTR@Contributors{%
+    #1 & #2 \tabularnewline
+  }
+}
+\newcommand{\AtlasAuthorContributor}[3]{%
+  \g@addto@macro\ACTR@Contributors{%
+    #1 & #3 \tabularnewline
+  }
+  \author[#2]{#1}
+}
+
+\newcommand*{\AtlasContributionsTitle}{List of contributions}
+
+\newcommand{\PrintAtlasContribute}[1]{%
+  \newlength{\ACTR@namewidth}
+  \newlength{\ACTR@linewidth}
+  \setlength{\ACTR@namewidth}{#1\linewidth}
+  \setlength{\ACTR@linewidth}{\linewidth}
+  \addtolength{\ACTR@linewidth}{-#1\linewidth}
+  \addtolength{\ACTR@linewidth}{-4\tabcolsep}
+  \section*{\AtlasContributionsTitle}
+  {\raggedright
+    \ifACTR@xtab%
+      \begin{xtabular}{>{\raggedright}p{\ACTR@namewidth}p{\ACTR@linewidth}}
+        \toprule
+        \ACTR@Contributors
+        \bottomrule
+      \end{xtabular}
+    \else %
+      \begin{tabular}{>{\raggedright}p{\ACTR@namewidth}p{\ACTR@linewidth}}
+        \toprule
+        \ACTR@Contributors
+        \bottomrule
+      \end{tabular}
+    \fi
+  }
+}
+
+\endinput

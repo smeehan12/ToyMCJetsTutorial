@@ -1,0 +1,168 @@
+%-------------------------------------------------------------------------------
+% This file provides a skeleton ATLAS boook for things like TDRs.
+%-------------------------------------------------------------------------------
+% \pdfoutput=1
+% The \pdfoutput command is needed by arXiv/JHEP/JINST to ensure use of pdflatex.
+% It should be included in the first 5 lines of the file.
+%-------------------------------------------------------------------------------
+% Specify where ATLAS LaTeX style files can be found.
+\newcommand*{\ATLASLATEXPATH}{latex/}
+% Use this variant if the files are in a central location, e.g. $HOME/texmf.
+% \newcommand*{\ATLASLATEXPATH}{}
+%-------------------------------------------------------------------------------
+\documentclass[BOOK,UKenglish,texlive=2016]{\ATLASLATEXPATH atlasdoc}
+% The language of the document must be set: usually UKenglish or USenglish.
+% british and american also work!
+% Commonly used options:
+%  texlive=YYYY          Specify TeX Live version (2016 is default).
+%  atlasstyle=true|false Use ATLAS style for document (default).
+%  coverpage             Create ATLAS draft cover page for collaboration circulation.
+%                        See atlas-draft-cover.tex for a list of variables that should be defined.
+%  cernpreprint          Create front page for a CERN preprint.
+%                        See atlas-preprint-cover.tex for a list of variables that should be defined.
+%  PAPER                 The document is an ATLAS paper (draft).
+%  CONF                  The document is a CONF note (draft).
+%  PUB                   The document is a PUB note (draft).
+%  BOOK                  The document is of book form, like an LOI or TDR (draft)
+%  txfonts=true|false    Use txfonts rather than the default newtx - needed for arXiv submission.
+%  paper=a4|letter       Set paper size to A4 (default) or letter.
+
+%-------------------------------------------------------------------------------
+% Extra packages:
+\usepackage{\ATLASLATEXPATH atlaspackage}
+% Commonly used options:
+%  biblatex=true|false   Use biblatex (default) or bibtex for the bibliography.
+%  backend=biber         Use the biber backend rather than bibtex.
+%  subfigure|subfig|subcaption  to use one of these packages for figures in figures.
+%  minimal               Minimal set of packages.
+%  default               Standard set of packages.
+%  full                  Full set of packages.
+%-------------------------------------------------------------------------------
+% Style file with biblatex options for ATLAS documents.
+\usepackage{\ATLASLATEXPATH atlasbiblatex}
+
+% Package for creating list of authors and contributors to the analysis.
+\usepackage{\ATLASLATEXPATH atlascontribute}
+
+% Useful macros
+\usepackage{\ATLASLATEXPATH atlasphysics}
+% See doc/atlas_physics.pdf for a list of the defined symbols.
+% Default options are:
+%   true:  journal, misc, particle, unit, xref
+%   false: BSM, heppparticle, hepprocess, hion, jetetmiss, math, process, other, texmf
+% See the package for details on the options.
+
+% Files with references for use with biblatex.
+% Note that biber gives an error if it finds empty bib files.
+\addbibresource{atlas-document.bib}
+\addbibresource{bibtex/bib/ATLAS.bib}
+
+% Paths for figures - do not forget the / at the end of the directory name.
+\graphicspath{{logos/}{figures/}}
+
+% Add you own definitions here (file atlas-document-defs.sty).
+\usepackage{atlas-document-defs}
+
+%-------------------------------------------------------------------------------
+% Generic document information
+%-------------------------------------------------------------------------------
+
+% Title, abstract and document 
+\input{atlas-document-metadata}
+% Author and title for the PDF file
+\hypersetup{pdftitle={ATLAS document},pdfauthor={The ATLAS Collaboration}}
+
+%-------------------------------------------------------------------------------
+% Content
+%-------------------------------------------------------------------------------
+\begin{document}
+\frontmatter
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+
+\clearpage
+\mainmatter
+\pagenumbering{arabic}
+%===============================================================================
+\chapter{Executive summary}
+%===============================================================================
+
+%===============================================================================
+\part{Motivation}
+%===============================================================================
+
+Put the motivation here ...
+
+%===============================================================================
+\chapter{Physics}
+%===============================================================================
+
+%===============================================================================
+\part{Implementation}
+%===============================================================================
+
+%===============================================================================
+\chapter{Plan}
+%===============================================================================
+
+Put the description of the plan here.
+
+%===============================================================================
+\chapter{Finances}
+%===============================================================================
+
+Put the costs here.
+
+\clearpage
+%-------------------------------------------------------------------------------
+\section*{Acknowledgements}
+%-------------------------------------------------------------------------------
+
+%\input{acknowledgements/Acknowledgements}
+
+The \texttt{atlaslatex} package contains the acknowledgements that were valid 
+at the time of the release you are using.
+These can be found in the \texttt{acknowledgements} subdirectory.
+When your ATLAS paper or PUB/CONF note is ready to be published,
+download the latest set of acknowledgements from:\\
+\url{https://twiki.cern.ch/twiki/bin/view/AtlasProtected/PubComAcknowledgements}
+
+
+%-------------------------------------------------------------------------------
+\clearpage
+\appendix
+\part*{Appendix}
+\addcontentsline{toc}{part}{Appendix}
+%-------------------------------------------------------------------------------
+
+In a document, an appendix is used for technical details that would otherwise disturb the flow.
+Such an appendix should be printed before the Bibliography.
+
+
+%-------------------------------------------------------------------------------
+% If you use biblatex and either biber or bibtex to process the bibliography
+% just say \printbibliography here
+\printbibliography
+% If you want to use the traditional BibTeX you need to use the syntax below.
+%\bibliographystyle{bibtex/bst/atlasBibStyleWoTitle}
+%\bibliography{atlas-document,bibtex/bib/ATLAS}
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+\backmatter
+
+% Lists of figures and tables
+\listoffigures
+\listoftables
+
+
+%-------------------------------------------------------------------------------
+% Print the list of contributors to the analysis
+% The argument gives the fraction of the text width used for the names
+%-------------------------------------------------------------------------------
+\clearpage
+\PrintAtlasContribute{0.30}
+
+\end{document}

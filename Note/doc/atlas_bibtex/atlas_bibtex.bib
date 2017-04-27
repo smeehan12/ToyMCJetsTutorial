@@ -1,0 +1,142 @@
+% Note that JHEP only prints the preprint number etc. if the entry type is Article.
+% If you are planning to submit to JHEP/JINST replace all Booklet with Article.
+
+% While it is possible to use the collaboration field, this only works with a few styles
+% and so is discouraged.
+
+% How to cite a paper from an LHC Collaboration 
+% The name of the first author must NOT appear, hence the use of xauthor instead of author in this example.
+@article{lhcCollaboration:2012,
+  author = "{ATLAS Collaboration}",
+  xauthor = "Aad, G. and others", 
+  title = "{Searches for supersymmetry with the ATLAS detector using final states with two leptons 
+    and missing transverse momentum in $\sqrt{s} = 7$\;TeV proton--proton collisions}",
+  journal = "\PLB{}",  
+  volume = "709",
+  number = "3",
+  pages = "137",  
+  doi = "10.1016/j.physletb.2012.01.076",
+  year = 2012,
+  reportNumber = "CERN-PH-EP-2011-165",
+  archivePrefix = "arXiv",
+  eprint = "1110.6189",
+  primaryClass = "hep-ex",
+} 
+
+% How to cite a paper from any other Collaboration
+% The name of the first author MUST appear.
+@article{otherCollaboration:2007,
+  author = "{PHOBOS Collaboration} and Alver, B. and others",
+  title = "{Cluster properties from two-particle angular correlations in $pp$ collisions at $\sqrt{s}=200$\;GeV and 
+    410\;GeV}",
+  xcollaboration = "PHOBOS",
+  journal = "\PRC{}",
+  volume = "75",
+  pages = "054913",
+  doi = "10.1103/PhysRevC.75.054913",
+  year = 2007,
+  archivePrefix = "arXiv",
+  eprint = "0704.0966",
+  primaryClass = "hep-ex",
+}
+
+% How to cite a paper from individual authors
+@article{authors:2008,
+  author = "Sherstnev, A. and Thorne, R. S.",
+  title = "{Parton distributions for LO generators}",
+  journal = "\EPJC{}",
+  volume = "55",
+  pages = "553",
+  doi = "10.1140/epjc/s10052-008-0610-x",
+  year = 2008,
+  archivePrefix = "arXiv",
+  eprint = "0711.2473",
+  primaryClass = "hep-ph",
+}
+
+% How to cite an arXiv only paper
+@booklet{arxivOnly:2009,
+  author = "Skands, P. Z.",
+  title = "{The Perugia tunes}",
+  year = 2009,
+  archivePrefix = "arXiv",
+  eprint = "0905.3418",
+  primaryClass = "hep-ph",
+}
+
+% How to cite an arXiv only paper submitted to a journal
+@article{arxivSub:2011,
+  author = "Monk, J. and Oropeza-Barrera, C.",
+  title = "{The HBOM method for unfolding detector effects}",
+  journal = "submitted to \NIM{}",
+  year = 2011,
+  archivePrefix = "arXiv",
+  eprint = "1111.4869",
+  primaryClass = "hep-ex",
+}
+
+% How to cite an ATLAS CONF note
+% The name of the first author must NOT appear
+@booklet{ATLAS-CONF-2012-058,
+  author = "{ATLAS Collaboration}",
+  title = "{Search for gluino-mediated scalar top and bottom quark production in final states with missing transverse energy and at least three $b$-jets with the ATLAS Detector}",
+  howpublished = "{ATLAS-CONF-2012-058}",
+  url = "http://cdsweb.cern.ch/record/1453786",
+  year = "2012",
+}
+
+% How to cite part of a collection using biblatex.
+@collection{lhc:vol1a,
+  editor =       "Brüning, Oliver Sim and Collier, Paul and Lebrun, P
+                  and Myers, Stephen and Ostojic, Ranko and Poole,
+                  John and Proudlock, Paul",
+  title =        "{LHC Design Report. 1. The LHC Main Ring}",
+  institution =  "CERN",
+  number =       "CERN-2004-003-V-1, CERN-2004-003",
+  address =      "Geneva",
+  year =         "2004",
+  url =          "https://cdsweb.cern.ch/record/782076"
+}
+
+% How to cite part of a collection using traditional BibTeX.
+@booklet{lhc:vol1b,
+  editor =       "Brüning, Oliver Sim and Collier, Paul and Lebrun, P
+                  and Myers, Stephen and Ostojic, Ranko and Poole,
+                  John and Proudlock, Paul",
+  title =        "{LHC Design Report. 1. The LHC Main Ring}",
+  institution =  "CERN",
+  howpublished = "{CERN-2004-003-V-1, CERN-2004-003}",
+  address =      "Geneva",
+  year =         "2004",
+  url =          "https://cdsweb.cern.ch/record/782076"
+}
+
+% How to cite a book.
+@book{kopka04,
+  author =    {Kopka, Helmut and Daly, Patrick W.},
+  title =     {Guide to \LaTeX},
+  publisher = {Addison-Wesley},
+  year =      {2004},
+  edition =   {4}
+}
+
+% How to cite a thesis.
+@thesis{tlodd:2012,
+  author =       {Loddenkötter, Thomas},
+  title =        {Implementation of a kinematic fit of single
+                  top-quark production in association with a $W$ boson
+                  and its application in a neural-network-based
+                  analysis in {ATLAS}},
+  type =         {PhD Thesis},
+  school =       {University of Bonn},
+  year =         {2012},
+  note =         {BONN-IR-2012-06},
+  url =          {http://hss.ulb.uni-bonn.de/diss_online},
+}
+
+% How to cite an online source.
+@online{lshort,
+  author =    {Oetiker, Tobias and others},
+  title =     "{A (Not So) Short Introduction to LaTeX2e}",
+  url =       {http://ctan.org/tex-archive/info/lshort}
+}

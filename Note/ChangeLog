@@ -1,0 +1,319 @@
+2017-03-31  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 03-00-01.
+  * atlaslatex is now maintained in Git.
+	* February and March 2017 update of publications.
+2017-02-16  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 03-00-00.
+  * Default TeX Live version changed to 2016 to match arXiv.
+  * October 2016 to January 2017 updates of ATLAS publications.
+	* eVkern option selected by default when using txfonts.
+  * Some options to add more real estate for the abstract on the title page.
+  * Add option datetop to put the date at the top of the title page.
+  * Add option titlepage to select normal or smaller fonts for the title page.
+  * Fix problem when using subcaption with list of figures or tables.
+  * Move maxbibnames and block options to atlasbiblatex.sty.
+  * Set maxbibnames=5 by default to conform with current recommendations.
+  * Added option subfig to atlaspackage, so all subfigure packages can be turned off.
+  * More generic font commands on cover and title pages.
+  * Add option to reduce font sizes on title page.
+  * Add option to include mhchem early for TeX Live 2014.
+  * Add some more temporary files that come from latexmk and TextMate to the list to clean up.
+  * Small change to atlasdoc1.cls to get date printed when KOMA-Script is not used.
+
+2016-10-10  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 02-00-01.
+	* Fixes known bugs in version 02-00-00. Tested on usual platforms.
+	* Add atlascover1.sty to go with atlasdoc1.cls.
+	* September update of publications.
+2016-09-21  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 02-00-00.
+	* Drop standard LaTeX classes - only use KOMA-Script.
+	* atlasdoc1 can use LaTeX classes, but does not support BOOK.
+	* Add BOOK option for book as base class for things like LOIs and TDRs.
+	* Use the command "make newbook" to create such a document.
+	* This release is not perfect. You have to steer the coverpage from class options.
+	Hopefully this will be fixed in the next release.
+
+2016-09-07  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-08-02.
+	* June, July, August updates of ATLAS and CMS publications.
+2016-08-23  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-08-01.
+	* New style file atlasjetetmiss.sty with definitions from the Jet/ETmiss group.
+	* A number of definitions from the Jet/ETmiss group were added to atlasmisc.sty,
+	atlasparticle,sty and atlasprocess.sty.
+	* Add option eVkern to atlaspackage to move 'e' and 'V' closer
+	together in eV and its variants, e.g. GeV.
+	* Add options hepparticle and hepprocess to atlasphysics,
+	which use particle names from the hepparticle package.
+	* Update definitions of \GeV etc. in atlasunit.sty (even though you
+	shouldn't be using them - use siunitx instead)!
+	* Add some discussion about \it, \rm, \tt etc. errors in TeX Live 2016.
+2016-06-15  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-13.
+	* Add location and address options to atlasbiblatex.
+	* Do not print month in references (when using biblatex).
+	* Correct volume number for JHEP (without year).
+	* May updates of ATLAS and CMS publications.
+2016-05-20  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-12.
+	* Add maxbibnames option to atlaspackage.
+	* April updates of ATLAS and CMS publications.
+2016-05-09  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-11.
+	* Switch to new ATLAS logo.
+	* March updates of ATLAS and CMS publications.
+2016-03-22  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-10.
+	* February updates of ATLAS and CMS publications.
+	* Small fix to link from journal information to DOI.
+	* Small updates to documentaton on ATLAS LaTeX.
+	* Add xspace to aMC@NLO.
+	* Adjusted journal examples and documentation to use	\ATLASLATEXPATH.
+	This makes compilation with Windows easier, as links are no longer needed.
+2016-01-29  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-09.
+	* December and January updates of ATLAS and CMS publications.
+2015-12-19  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-08.
+	* October and November updates of ATLAS and CMS publications.
+	* Suppress issue number in journal volume.
+	* Add a couple more Herwig symbols.
+2015-11-21  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-07.
+	* August and September updates of ATLAS and CMS publications.
+	* Updated acknowledgements.
+	* Some help for JINST publications added.
+	* Change to CC-BY-4.0.
+	* Add commented out code to get institutes on one line for title page.
+2015-07-31  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-06.
+	* June and July updates of ATLAS and CMS publications.
+	* Improve siunitx option setting for TeX Live 2011 (arXiv version).
+	* A few fixes so that things (sort of) work with TeX Live earlier than 2009.
+	* Move \pdfoutput=1 command even earlier in template.
+	* Small tweak of title page header for long note numbers.
+	* Add \App etc. to atlasxref.sty for appendices.
+	* Add some more Monte Carlos to atlasmisc.sty.
+	* Add some more units to atlas_physics for testing.
+	* Add some documentation about JINST.
+	* Adjust things so documentation compiles for TeX Live versions.
+	* Tweaks for subtables, so that labels are correct.
+2015-06-22  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-05.
+	* Monthly update of ATLAS and CMS publications.
+	* Only print first page in biblatex bibliography.
+	* Add (unfortunately) support for TeX Live 2007 and earlier -needed by JINST.
+	* Add a few more MC generators to atlasmisc.sty.
+	* Add macros for cross-referencing appendices to atlasxref.sty.
+2015-06-10  Ian Brock  <Ian.Brock@cern.ch>
+	* Set subfig and subcaption options so that \ref and \subref work as in subfigure.
+	* Add a bit more documentation on subfigures.
+2015-06-03  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-04.
+	* Monthly update of ATLAS and CMS publications.
+	* Biblatex option only works as of 2014 and not 2013.
+	* Add comment to documentation about APS journals.
+	* Add \ppbar as symbol.
+2015-04-29  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-03.
+	* Monthly update of ATLAS and CMS publications.
+	* Do not use tabular on cover page for supporting notes.
+	* A few minor improvements to template comments.
+	* Improve steering of what is done if latex command is used in Makefile.
+	* Check if biblatex is loaded in atlasbiblatex.
+2015-03-20  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-02.
+	* A few small fixes to the bib files.
+	* Move from atlas-paper.bib to ATLAS.bib everywhere.
+	* Document better how to switch between subfigure, subfig and subcaption.
+	* Move acknowledgements archive to the admin tree
+2015-03-17  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-01.
+	* Line numbers turned off by mistake in version 01-07-00.
+        * Added preliminary version of ATLAS.bib.
+	* Add block option to atlaspackage.
+2015-03-13  Ian Brock  <Ian.Brock@cern.ch>
+        * Updated PUB and CONF note bib files. ATLASbib comes a bit later.
+        * Improve instructions for arXiv and CERN preprint.
+2015-03-09  Ian Brock  <Ian.Brock@cern.ch>
+	* Tag as version 01-07-00.
+	* ATLAS CONF and PUB notes bib files included. Journal	publications to come.
+	* maketitle=false is now the default option to avoid problems with
+	siunitx and units in the title/abstract.
+	* Added a few instructions on CERN preprint preparation.
+	* Add option detect-all to siunitx.
+	* Improve cross-referencing macros a bit.
+	* Some adjustments and additions made to the standard Makefile
+	* Added a new command "make cleanepstopdf" to delete PDF files
+	made automatically from EPS files.
+2015-03-02 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-06-03.
+	* Allow BSM and bsm as options for atlasphysics.sty.
+2015-02-23 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-06-02.
+	* Add a variable \ATLASLATEXPATH which contains the directory for style files.
+	This can be used instead of the texmf option and is more flexible.
+	* Print note after URL and eprint.
+	* Add biblatex option to turn off eprint.
+	* Add some documentation on different directory options.
+2015-02-08 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-06-01.
+	* Remove contact editor from cover page.
+	* Adjust things so that only TeX Live version has to be specified.
+	* Remove 'make new2009' target. Use 'make new TEXLIVE=2009' etc instead.
+	* Remove atlas-document-2009.tex, as texlive=YYYY now steers everything.
+	* Should work back to TeX Live 2009. Before that have to turn off biblatex.
+2015-02-01 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-06-00.
+	* Several tweaks to the cover page so that it can cope better with a long abstract.
+	* Add option coverfontsize to steer the base font size for the cover pages.
+	* Add PAPER and NOTE as options to atlasdoc, so that ATLAS Paper gets printed on title page.
+	* Adjust options for placement and number of floats on a page.
+	* Only print journal name for paper drafts.
+	* Add package ifthen as a required package.
+2014-12-23 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-05-03.
+	* Add acknowledgements.
+2014-12-20 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-05-02.
+	* Replace pageheadfoot option with pagehead.
+	* Small updates to documentation.
+2014-12-08 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-05-00.
+	* First official release of the ATLAS preprint style.
+	* atlasstyle is now default for all documents.
+	* biblatex with the bibtex backend is the default way of typesetting references.
+	* Use scrpage2 with KOMA-Script and fancyhdr with normal LaTeX classes.
+	* Add template fles for TeX Live 2009 and central atlaslatex installations.
+	* Remove date/time definition from atlasmisc.sty to avoid errors with TeX Live 2013.
+	* Add a document on table formatting.
+	* Clean up paper template and change its name to a general guide.
+	* Bring biblatex and bibtex onto a similar level in the documentation and the style file.
+	* Harmonise biblatex and BibTeX style files. Style conforms to ATLAS wishes.
+	* Add option to use different backends with biblatex in atlaspackage.
+	* Revise a bit the documentation on a BibTeX entry for a CONF note.
+	* Add date to CERN preprint front page.
+	* Move biblatex style file to latex subdirectory and just link from bibtex/bst.
+	* Add options to turn on/off title and style of title for articles with biblatex.
+	* Add heavy ion style file. A few new definitions aded to atlasmisc.sty.
+	* Auxiliary material includes fancyhdr or scrpage2 by default.
+	* Start adding standard text snippets.
+	* Small fix to detector description.
+2014-11-20 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-04-01.
+	* Small fix so atlascover recognises better when atlasdoc is used.
+	* Started documenting ATLAS preprint style in atlas_latex.
+2014-11-19 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-04-00.
+	* First implementation of the ATLAS preprint style.
+	* Fonts still have to be checked on other platforms.
+	* Major rewrite of both atlasdoc.cls and atlascover.sty, which removes spurious offsets.
+	* Removed need for title skip parameter and horizontal and vertical offsets on cover pages.
+	* Need coverpage=true in atlascover.sty if you want a draft cover and are using
+	  atlascover.sty standalone.
+	* No longer need atlasdoc as option to atlascover,
+	  as package checks if atlasdoc is being used itself.
+	* make cleanpdf command added (or being added) to standard Makefiles.
+	* Adding of extra blank pages after cover page mostly removed.
+	  Have to see if it is necessary somewhere.
+	* Options added to atlasdoc for different fonts.
+	* showframe option added for debugging.
+2014-10-20 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-03-06.
+	* Require hyperref in atlascover to avoid problems with supporting documentation.
+2014-10-16 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-03-05.
+	* Rename documentation directories and files to use _ instead of -.
+2014-10-09 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-03-04.
+	* Small fix to auxiliary material.
+	* Replace some \\ with \par in atlascover for consistency.
+2014-10-09 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-03-03.
+	* Fix to CONF and PUB note draft cover pages.
+2014-09-22 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-03-02.
+	* Instructions for Fedora added.
+	* Do not use lineno with revtex - use class option linenumbers instead.
+	* Add option to atlaspackage to turn off lineno.
+	* Use \linewidth instead of \textwidth in PrintAtlasContribute so it works in 
+	  two column format.
+	* Print out web page on auxiliary material cover.
+	* Fix typo that put line numbers on cover page.
+	* Move date and page number from header to footer in draft mode.
+	* List of contributors was too wide.
+	* Small fix to BibTeX style files and bring them back in sync.
+2014-09-15 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-02-00
+    * Bug fixed for CentOS/Fedora, as scrdate/scrtime did not work properly.
+2014-09-09 Ian Brock <Ian.Brock@cern.ch>
+	* Add texmf swtich to atlasdoc (needed for cover).
+	* full option did not work in atlaspackage.
+	* Use kvoptions in atlascontribute.
+	* Change option from noauthblk to authblk=false.
+	* Internally quite a lot of variable name changes.
+	* Prepare atlasdoc for moving to kvoptions.
+	* Switched from tabs to spaces in many places.
+2014-09-08 Ian Brock <Ian.Brock@cern.ch>
+	* Small fix to atlaspackage so texlive switch works.
+2014-09-06 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-01-00
+	* Add template for auxiliary material (atlas-auxmat).
+	* Add switch so that TeX Live 2009 also works.
+	* Do not include atlascontribute in metadata file.
+	* Add preprintcover to Makefile.
+	* Use fancyhdr to make header in draft mode (and also for auxiliary material).
+	* Use scrdate and scrtime for current date and time.
+	* Replace color with xcolor.
+	* Switch to kvoptions in atlaspackage.
+	* Add option to atlaspackage to turn off including siunitx.
+	* Added atlasjournal and atlasxref to atlasphysics.
+	* Further improvements to documentation, especially to atlas-latex.
+2014-09-04 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 01-00-00
+	* Add some examples of paper drafts with journal formatting.
+	* More style files for journal names and cross references.
+	* Use kvoptions for setting options, as then offsets can be given.
+	* Move logos from figures to logos directory.
+	* Include JHEP BibTeX style file in bibtex/bst.
+	* Updates to documentation, especially BibTeX and LaTeX guide.
+2014-08-29 Ian Brock <Ian.Brock@cern.ch>
+	* Added a new style file atlascontribute.sty. It can be used to create both the
+	  list of authors and the contributions they made to the analysis.
+	* atlas-document-contribute is no longer needed. This information should be
+	  included in atlas-document-metadata.tex instead.
+2014-08-28 Ian Brock <Ian.Brock@cern.ch>
+	* Add lineno as required package, so that atlasdoc does not need atlaspackage.
+	* Rounding note added to documentation.
+2014-08-27 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 00-97-00.
+	* atlas-physics document list of definitions created automatically.
+	* CONF and PUB are now options for CONF and PUB notes.
+	* Cover pages change a bit depending on these options.
+	* EdBoard replaced by Readers for a PUB note.
+	* More documentation on options in atlasdoc and atlascover added to atlas-latex
+2014-08-27 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 00-96-00.
+	* Merge biblatex setup into atlaspackage with an option.
+	* Add option texmf to atlasphysics if package in installed centrally
+	* Add note number back into title page
+	* Switch back from \AtlasTitle to \title
+	* Further improve documentation
+2014-08-22 Ian Brock <Ian.Brock@cern.ch>
+	* Tag as version 00-95-00.
+	* First alpha release of atlaslatex.
+	* atlasphysics.sty split into smaller files.
+	* Options to steer atlasphysics.sty.
+	* Documentation reorganised. Split into paper style,
+	  for which PubCom is responsible and atlaslatex guide.
+	* Templates all in templates directory.
+	* Makefile can make a new document.
+	* Better use of geometry to set page size everywhere.
+	* Add inputenc and fontenc to atlasphysics.sty.
+	* In fact, these (and txfonts) should probably move to atlasdoc.cls.
+	* Use tocloft for table of contents.
+	* Titles should invoke boldmath automatically.
+2014-08-25 Ian Brock <Ian.Brock@cern.ch>
+	* Merge biblatex into atlaspackage and add biblatex option.
+	* Add koma option to atlasdoc.cls.

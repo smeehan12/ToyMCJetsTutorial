@@ -1,0 +1,79 @@
+%-------------------------------------------------------------------------------
+% An absolute minimal ATLAS document for auxiliary material.
+%-------------------------------------------------------------------------------
+% Specify where ATLAS LaTeX style files can be found.
+\newcommand*{\ATLASLATEXPATH}{latex/}
+% Use this variant if the files are in a central location, e.g. $HOME/texmf.
+% \newcommand*{\ATLASLATEXPATH}{}
+%-------------------------------------------------------------------------------
+\documentclass[auxmat,UKenglish,texlive=2016]{\ATLASLATEXPATH atlasdoc}
+% Relevant options:
+%  texlive=YYYY          Specify TeX Live version (2016 is default)
+%  atlasstyle=true|false Use ATLAS style for document (default)
+%  txfonts=true|false    Use txfonts rather than the default newtx
+%  paper=a4|letter       Set paper size to A4 (default) or letter
+%  maketitle=true|false  Run or do not run \maketitle from the class
+
+% Extra packages
+\usepackage{\ATLASLATEXPATH atlaspackage}
+
+% Package for creating list of authors and contributors to the analysis
+% \usepackage{\ATLASLATEXPATH atlascontribute}
+
+% Useful macros
+\usepackage{\ATLASLATEXPATH atlasphysics}
+
+% Paths for figures
+\graphicspath{{logos/}{figures/}}
+
+%-------------------------------------------------------------------------------
+% Generic document information
+%-------------------------------------------------------------------------------
+
+% Author and title for the PDF file
+\hypersetup{pdftitle={ATLAS auxiliary material},pdfauthor={The ATLAS Collaboration}}
+% Title, abstract and document 
+\input{atlas-document-metadata}
+
+% Preprint title
+\AtlasTitle{AtlasTitle: Bare bones ATLAS document with auxiliary material}
+
+% CERN preprint number
+\PreprintIdNumber{CERN-PH-EP-2016-XXX}
+
+% arXiv identifier
+\arXivId{16XX.YYYY}
+
+% HepData record
+\HepDataRecord{1234567}
+
+\AtlasAbstract{%
+  This document contains auxiliary figures and tables related to the paper:\\
+  ``\AtlasTitleText''.
+
+  All figures can be found at:\\
+  \AtlasPaperWebpage
+
+  The information is uploaded to HepData in the record:\\
+  \AtlasHepDataRecord,\\
+  where details about the models used in the paper, 
+  the selections and the final fit results can be found.
+}
+
+\begin{document}
+
+\maketitle
+
+% Page style to get standard header with arXiv reference
+% Define \chead here, so that it overwrites \fbox{DRAFT} if necessary
+\chead{ATLAS Collaboration -- arXiv:\AtlasArXivId\ \AtlasArXivCat}
+% If you do not want the date, either comment out \AtlasVersion or uncomment
+% \ifoot{} % KOMA-Script
+% \lfoot{} % Standard LaTeX classes
+% The page style should have been set by atlasdoc
+% \pagestyle{scrheadings} % KOMA-Script
+% \pagestyle{fancy}       % Standard LaTeX classes
+
+Here is the document. Remove this text if you only want the front page.
+
+\end{document}
