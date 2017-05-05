@@ -130,7 +130,7 @@ Describing the evolution of a single partons to many partons by this process of 
 where $z=\frac{E_{b}}{E_{a}}$ is the relative energy of the more energetic parton after the splitting to that of the initial parton and $\theta$ is the opening angle of the splitting between parton $b$ and parton $c$.  In this model of a single emission, the parameters $z$ and $\theta$ are real physical
 
 
-There are three key features that emerge from this equation that dictate the first order evolution of jets.  The first concerns the function $F(z)$, related to the $abc$ splitting vertex and depends whether the vertex is a $ggg$, $qqg$, or $gqq$ vertex.  For the $gqq$ vertex, this function is well defined for all values of $z$ but for the $ggg$ and $qqg$ vertices a singularity exists for an emission of $z=0$ or $z=1$, meaning that radiation coming from these splittings are preferentially low energy, ``soft''.  Second, the $1/\theta$ singularity common to all vertices implies that splitting are preferentially at small angles, ``collinear''.  The third key feature is that in addition to the soft and collinear nature of the splittings, the splittings do not depend on the azimuthal angle around the axis of propagation of parton $a$.  These three features lead to the intuition that the resulting partonic energy pattern coming from the initial parton that was produced will generally be azimuthally symmetric around the its initial direction with an energetic central core and some amount of less energetic radiation distributed further out.
+There are three key features that emerge from this equation that dictate the first order evolution of jets.  The first concerns the function $F(z)$, related to the $abc$ splitting vertex and depends whether the vertex is a $ggg$, $qqg$, or $gqq$ vertex.  For the $gqq$ vertex, this function is well defined for all values of $z$ but for the $ggg$ and $qqg$ vertices a singularity exists for an emission of $z=0$ or $z=1$, meaning that radiation coming from these splittings are preferentially low energy, ``soft'', and generally follow a functional form of $1/z$.  Second, the $1/\theta$ singularity common to all vertices implies that splitting are preferentially at small angles, ``collinear''.  The third key feature is that in addition to the soft and collinear nature of the splittings, the splittings do not depend on the azimuthal angle around the axis of propagation of parton $a$.  These three features lead to the intuition that the resulting partonic energy pattern coming from the initial parton that was produced will generally be azimuthally symmetric around the its initial direction with an energetic central core and some amount of less energetic radiation distributed further out.
 
 \subsection{Hadronization}
 \label{sec:had}
@@ -172,7 +172,7 @@ You may be working through this tutorial with your main interest being in partic
 \item ``Oh \$*@T!'' : If your hard drive crashes, you lose your laptop, or accidentally type \texttt{rm -rf ~/*} into the terminal, you are not screwed.
 \end{enumerate}
 
-If this is a new concept to you, then do not skip this section.  Instead, follow \href{https://try.github.io}{this Git tutorial} and register for an account on \textsc{GitHub}.  After that, all of the work that you share with collaborators should follow these simple guidelines :
+If this is a new concept to you, then do not skip this section.  Instead, follow \href{https://try.github.io}{this Git tutorial} and register for an account on \textsc{GitHub}.  Once you are more familiar with how to use \textsc{Git}, another good tutorial can be found at \href{http://learngitbranching.js.org/}{this second Git tutorial}.  After that, all of the work that you share with collaborators should follow these simple guidelines :
 
 \begin{itemize}
 \item Do not email your code to people.  If your code is worth sending to someone else, it should be accessible by sharing a link like \href{https://github.com/smeehan12/PythiaSimulatorAnalysis}{https://github.com/smeehan12/PythiaSimulatorAnalysis} in an email.  
@@ -367,7 +367,7 @@ This clustering process begins with the set of final state particles.  In the ca
 
 \begin{equation}
 \label{eqn:dij}
-d_{ij}=min(p_{Ti}^{2p},p_{Tj}^{2p})\times \frac{\Delta_{ij}}{R}
+d_{ij}=min(p_{Ti}^{2n},p_{Tj}^{2n})\times \frac{\Delta_{ij}}{R}
 \end{equation}
 \begin{equation}
 \label{eqn:dib}
@@ -380,7 +380,7 @@ In both of these cases, either an $ij$ combination or the promotion of a pseudoj
 
 \begin{center}
 \fbox{\begin{minipage}{6in}
-From the previous Monte Carlo model you have created, you have the ability to simulate parton showers/hadronizations that are representative of hadronic activity in LHC collisions.  At this stage, implement the \antikt algorithm to cluster a single event, including proper validation of the procedure.  Note that you will have to specify the parameters $p$ and $R$ which are choices of the algorithm.  Make a histogram of the number of jets that result from this algorithm for 1000 parton showers and do this for the set of $p$ values of [-1,0,1] and $R$ values of [0.01,0.05,0.1,0.5,1.0].  What differences do you see?  Do they make sense?
+From the previous Monte Carlo model you have created, you have the ability to simulate parton showers/hadronizations that are representative of hadronic activity in LHC collisions.  At this stage, implement the \antikt algorithm to cluster a single event, including proper validation of the procedure.  Note that you will have to specify the parameters $n$ and $R$ which are choices of the algorithm.  Make a histogram of the number of jets that result from this algorithm for 1000 parton showers and do this for the set of $n$ values of [-1,0,1] and $R$ values of [0.01,0.05,0.1,0.5,1.0].  What differences do you see?  Do they make sense?
 \end{minipage}}
 \end{center}
 
@@ -400,7 +400,7 @@ However, it is possible to generalize this concept of a jet observable to be any
 \fbox{\begin{minipage}{6in}
 Based on the jets that you have clustered in the previous section, calculate the  jet ``pseudo-mass'' as 
 \begin{center}
-$\text{pseudo-mass}(J) = E(j_1)\times E(j_2)\times \Delta R(j_1,j_2)$
+$\text{SimpleMass}(J) = E(j_1)\times E(j_2)\times \Delta R(j_1,j_2)$
 \end{center}
 where $j_1$ and $j_2$ are the two highest \pt constituents of the jet $J$.  In the case that a given parton shower and clustering produces more than one jet, perform this calculation for the jet of highest energy.  Perform this calculation for a large number of parton shower generations and make a histogram of the pseudo-mass for all of these generated showers.
 \end{minipage}}
