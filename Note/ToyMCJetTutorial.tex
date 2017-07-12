@@ -86,12 +86,17 @@
 
 %\tableofcontents
 
-
+\newpage
 \section{Introduction}
 One of the most commonly used tools to construct models in high energy physics (HEP) is Monte Carlo (MC) simulation.  
 This form of model building is applicable from the description of fundamental processes to the behavior of large detector systems and electronics.  The reason for using Monte Carlo simularion is rooted both in the inherent random nature of the systems under study as well as the ability to describe a complex system by the composition of many smaller processes.  
 
 There is extensive literature concerning the design of various types of Monte Carlo models, and extending what you learn here to those applications is your responsibility.  In this tutorial, an introduction to MC modelling is explored in the context of describing the physics of \textit{jets}~\cite{Ellis:1276292,Ellis:2007ib} and the Large Hadron Collider (LHC)~\cite{Evans:2008zzb} and how we study them using detectors called calorimeters~\cite{Proudfoot:2006tr}.
+
+This work is intended to be used as an educational tool by teachers and curious
+students who are interested in either the physics of the Large Hadron Collider or the topic of Monte Carlo simulation.  The text should be viewed as a means of 
+guiding your understanding with portions devoted to focused exercises that build 
+upon each other.  As the tutorial progresses, less explicit explanations of how to perform exercises are given such that you are encouraged to interpret and determine the best course of action as in a research context.  It is strongly recommended that the interested individual diligently follow all portions of the tutorial and carry out all exercises to have the full benefits of the work.  Typically, this takes between two and three weeks for an average student with an undergraduate level background in physics with periodic supervision by an expert.  At the end of the tutorial, there are suggested project extensions that can be used as full projects in the context of a course or to begin research on a focused topic of your own.
 
 
 
@@ -113,7 +118,9 @@ and yellow circles) of the hard partons.
 
 \subsection{The Parton Shower}
 \label{sec:ps}
-Describing the evolution of a single partons to many partons by this process of spawning additional partons by strong interactions is impossible to fully describe with the equations of QCD.  However, it can be shown that given an $n$ leg Feynman diagram ($\mathcal{M}_{n}$), the $n+1$ leg Feynman diagram ($\mathcal{M}_{n+1}$) formed by including an additional contribution from a parton \textit{splitting} ($a\rightarrow bc$), as shown in Figure~\ref{fig:diagrams}, scales as:
+In LHC collision events, single partons are produced by one process or another and emitted from the hard scatter.  These partons carry what is called \textit{color charge} and therefore interact with other \textit{colored} particles via the strong interaction.  However, unlike other fundemantal particles and interactions, single partons that can interact via the strong force cannot be isolated and observed by themselves~\cite{wilcek:nobel}.  Only composite groups of partons whose color charges cancel and form a \textit{colorless} particle are stable.  Such composite particles are called \textit{hadrons}.  Therefore, the initial parton that is emitted will gradually transform into a collimated flows of tens of stable hadrons, the ensemble of which deposits large amounts of energy into focused regions of the detector.
+
+This evolution of a single parton to many partons, and eventually into a collection of hadrons is governed by the principles and described by the equations of QCD ... which are quite complex.  In fact, they are so complex that at this point, it is impossible to fully describe with the equations of QCD.  However, it can be shown that given an $n$ leg Feynman diagram ($\mathcal{M}_{n}$), the $n+1$ leg Feynman diagram ($\mathcal{M}_{n+1}$) formed by including an additional contribution from a parton \textit{splitting} ($a\rightarrow bc$), as shown in Figure~\ref{fig:diagrams}, scales as:
 
 \begin{equation}
 |\mathcal{M}_{n+1}|^2 \sim \frac{1}{\theta^{2}} C_{A} F(z) |\mathcal{M}_{n}|^2
@@ -127,8 +134,7 @@ Describing the evolution of a single partons to many partons by this process of 
 \end{figure}
 
 \noindent
-where $z=\frac{E_{b}}{E_{a}}$ is the relative energy of the more energetic parton after the splitting to that of the initial parton and $\theta$ is the opening angle of the splitting between parton $b$ and parton $c$.  In this model of a single emission, the parameters $z$ and $\theta$ are real physical
-
+where $z=\frac{E_{b}}{E_{a}}$ is the relative energy of the more energetic parton after the splitting to that of the initial parton and $\theta$ is the opening angle of the splitting between parton $b$ and parton $c$.  In this model of a single emission, the parameters $z$ and $\theta$ can be interpretted in a physically meaningful way and pertain to the evolution of the energy and spatial spread of the shower.  However, in practice they are completely unobservable given that all of these dynamics occur within a distance scale that is less than the radius of a proton!
 
 There are three key features that emerge from this equation that dictate the first order evolution of jets.  The first concerns the function $F(z)$, related to the $abc$ splitting vertex and depends whether the vertex is a $ggg$, $qqg$, or $gqq$ vertex.  For the $gqq$ vertex, this function is well defined for all values of $z$ but for the $ggg$ and $qqg$ vertices a singularity exists for an emission of $z=0$ or $z=1$, meaning that radiation coming from these splittings are preferentially low energy, ``soft'', and generally follow a functional form of $1/z$.  Second, the $1/\theta$ singularity common to all vertices implies that splitting are preferentially at small angles, ``collinear''.  The third key feature is that in addition to the soft and collinear nature of the splittings, the splittings do not depend on the azimuthal angle around the axis of propagation of parton $a$.  These three features lead to the intuition that the resulting partonic energy pattern coming from the initial parton that was produced will generally be azimuthally symmetric around the its initial direction with an energetic central core and some amount of less energetic radiation distributed further out.
 
@@ -187,20 +193,20 @@ If you follow these rules and build habits, you will be a much more enjoyable in
 The accept-reject method, sometimes called the Von-Neumann method, can best be understood by examining a random process of making a measurement of a truly random physical system, that being a quantum mechanical particle in a box in a well-defined single Eigen state of the ground state energy as in Figure~\ref{fig:particle_in_box_1}.  
 
 
-\begin{figure}
+\begin{figure}[h]
  \centering
 \subfloat[]{
- \includegraphics[width=0.3\linewidth]{figures/qm1.png}
+ \includegraphics[width=0.5\linewidth]{figures/qm1.png}
  \label{fig:particle_in_box_1}
-}
+} \\
 \subfloat[]{
- \includegraphics[width=0.3\linewidth]{figures/qm2.png}
+ \includegraphics[width=0.4\linewidth]{figures/qm2.png}
  \label{fig:particle_in_box_2}
-}
+} 
 \subfloat[]{
- \includegraphics[width=0.3\linewidth]{figures/qm3.png}
+ \includegraphics[width=0.4\linewidth]{figures/qm3.png}
  \label{fig:particle_in_box_3}
-}
+} 
  \caption{A cartoon representation of the implementation of the accept-reject Monte Carlo generation method to produce a single $x$ measurement from the ground state of a particle in a box system in quantum mechanics.  The ground state probability density function (left) with the observable bounds $x_{low}$ and $x_{high}$ and two example random $x$ values $x_1$ and $x_2$.  Also shown are the decision making tools for single generations of $x_1$ (middle) and $x_2$ (right) showing the $y$ values for which the given $x$ value is accepted and rejected.}
  \label{fig:particle_in_box_acceptreject}
 \end{figure}
@@ -209,13 +215,32 @@ In this scenario, the measurement of interest which will be the randomly distrib
 
 To achieve this, we will use $y$.  The value $y$ has nothing to do with physics (unlike $x$ which represents the location of the particle in the box).  Instead, $y$ can be viewed as nothing more than a tool which allows you to either ``accept'' the event and collect it into part of your ensemble of events, or ``reject'' the event and think no more of that specific instance of the choice of $x$.  You want to preferentially keep $x$ values that are close to the center of the box but also sometimes keep events in the tails.  To do this, think about taking a single slice in $x$ near the tail as in Figure~\ref{fig:particle_in_box_2}.  Whenever you draw an $x$ value here, you must draw a corresponding $y$ value and compare it to the value of the function $PDF(x)$.  Since its in the tail, its more likely that the $y$ value chosen at random is larger than the function value.  Therefore, if you were to throw away the $x$ values here when the corresponding random $y$ is greater than $PDF(x)$, you will only be left with a few $x$ values with this value in your ensemble.  However, if instead you were to be looking near the center of the distribution, as in Figure~\ref{fig:particle_in_box_3}, then the situation is different.  More of the time, $PDF(x)$ is greater than $y$ so you are forced to keep a larger fraction of these events.  But, the value of $y$ that you choose must always be able to allow for the possibility of either accepting \textit{or} rejecting a given $x$ value.  So the range of $y$ values must be chosen to extend at least to the maximum value of the function.  As such, if the functional form of the probability density function has a maximum value that is greater than 1, then the range over which the $y$ value is chosen must be extended to encompass the full function.  If it extends above the maximum value of $PDF(x)$ in the range of interest, that is fine, but then the overall fraction of throws of $x$ that you accept will be smaller and your generation of accepted Monte Carlo events will be less efficient.
 
+Another explanation of the accept reject method is provided in Reference~\cite{acceptreject_video}.
+
 \begin{center}
 \fbox{\begin{minipage}{6in}
 Practice writing a program in~\textsc{Python} that generates random numbers, distributed according to a Gaussian distribution with a mean $\mu$ of 5 and a width $\sigma$ of 2 in the range of [0,10].
 \end{minipage}}
 \end{center}
 
-Another explanation of the accept reject method is provided in Reference~\cite{acceptreject_video}.
+
+\begin{center}
+\fbox{\begin{minipage}{6in}
+The accept-reject method is a very powerful.  So much so that we can use it to numerically evaluate the value of $\pi$.  To do this, imagine that you have a circle of diameter 1 inscribed within a square of side length 1 (you may want to draw a picture of this).  Now, using and accept-reject method, generate 1000 random points falling anywhere within the square shaped region.  Determine what fraction of these fall within the circle.  These two numbers, the total generated points, and those falling within the accepted region of the circle, can directly be related to the area of the square and the circle
+\begin{equation}
+A_{\text{square}} = d \times d = N_{\text{total points}} \\
+A_{\text{circle}} = \pi * (d/2)^{2} = N_{\text{accepted points}}
+\end{equation}
+and if we take the ratio of these two equations then we find
+\begin{equation}
+\frac{\pi\frac{d^2}{4}}{d^2} = \frac{N_{\text{accepted points}}}{N_{\text{total points}}} \\
+\pi = 4\times\frac{N_{\text{accepted points}}}{N_{\text{total points}}}
+\end{equation}
+Write a short program that calculates $\pi$ using this method.
+
+If you are able to calculate $\pi$, the next most important thing to realize is that this is an \textit{approximate} calculation and you should ask yourself about the precision of the answer. You probably compared the results with the value of $\pi$ you know from math class. We now want to use statistics to estimate the uncertainty. You already plotted a histogram with several $\pi$-values. One method to calculate and reduce the uncertainty is to calculate $\pi$ several times and determine the mean $\mu$ and standard deviation $\sigma$ of the distribution of calculated $\pi$ values. Increase the number of $\pi$-values you use and examine how $\sigma$ evolves. Another thing that will impact the precision of the determination of $\pi$ is to the number of random points used in each accept-reject calculation. Again calculate several $\pi$ values and get the mean and $\sigma$. Keep the number of $\pi$-values constant and alter the number of random points. How does $\sigma$ change? Does this make sense?
+\end{minipage}}
+\end{center}
 
 \subsection{Inverse Transform Method}
 A complementary method to the accept-reject method is the inverse transform method and aims to achieve the same goal, generating an ensemble of measurements, $x$ values, that are distributed according to some generic probability distribution function.  However, there exist a number of differences that make this method markedly different in how it achieves this goal.  
@@ -223,17 +248,17 @@ A complementary method to the accept-reject method is the inverse transform meth
 To understand how the algorithm proceeds and examine the differences with respect to the accept-reject method, we will again use the example of a particle in a box in the ground state.  In this case, the ground state PDF is as shown in Figure~\ref{fig:particle_in_box_4} and we desire to generate an ensemble of $x$ values that are preferentially located near the center of the box.  The first step is to \textit{transform} the PDF to the cumulative density function (CDF) by integrating the PDF from 0 to $x$ to obtain $CDF(x)$ as in Figure~\ref{fig:particle_in_box_5}.  It is this CDF which will be used in the generation of accepted $x$ values by using it as a translation tool.  To achieve this, you again start with the generation of uniformly distributed random numbers using \href{https://docs.python.org/2/library/random.html}{\texttt{random.random()}}.  However, in this case, these values will be used as the $y$ values to begin with, however instead of comparing these values to the PDF, these initial $y$ values will be translated to accepted $x$ measurement values by finding the \textit{inverse} of the CDF by inverting the formula $CDF(x)=y$.  Because the CDF is one-to-one, by construction this $x$ value is uniquely defined and is directly taken as the observed measurement.  
 
 \begin{figure}
- \centering
+\centering
 \subfloat[]{
- \includegraphics[width=0.3\linewidth]{figures/qm4.png}
- \label{fig:particle_in_box_4}
+\includegraphics[width=0.5\linewidth]{figures/qm4.png}
+\label{fig:particle_in_box_4}
 }
 \subfloat[]{
- \includegraphics[width=0.3\linewidth]{figures/qm5.png}
- \label{fig:particle_in_box_5}
+\includegraphics[width=0.5\linewidth]{figures/qm5.png}
+\label{fig:particle_in_box_5}
 }
- \caption{A cartoon representation of the implementation of the iverse-transform Monte Carlo generation method to produce a single $x$ measurement from the ground state of a particle in a box system in quantum mechanics.  (Left) The ground state probability density function (left) with the observable bounds $x_{low}$ and $x_{high}$ corresponding to 0 and $y_{high}$ on the cumulative probability density function (right).  Also shown is the generation of a single observation by the generation of a random value $y_{gen}$ and translation to the observed value $x_{gen}$.}
- \label{fig:particle_in_box_inversetransform}
+\caption{A cartoon representation of the implementation of the iverse-transform Monte Carlo generation method to produce a single $x$ measurement from the ground state of a particle in a box system in quantum mechanics.  (Left) The ground state probability density function (left) with the observable bounds $x_{low}$ and $x_{high}$ corresponding to 0 and $y_{high}$ on the cumulative probability density function (right).  Also shown is the generation of a single observation by the generation of a random value $y_{gen}$ and translation to the observed value $x_{gen}$.}
+\label{fig:particle_in_box_inversetransform}
 \end{figure}
 
 \begin{center}
@@ -254,7 +279,7 @@ Practice writing a program in~\textsc{Python} that generates random numbers,  di
 
 \begin{center}
 \fbox{\begin{minipage}{6in}
-Practice writing a program in~\textsc{Python} that generates random numbers, distributed according to a falling distribution of the form $e^{-x}$ in the range [0,5].  After doing this, generate the same distribution using the accept-reject method and determine the efficiency of the generation, defined as the fraction of accepted $x$ values with respect to the total generated $x$ values.  How does this efficiency compare for the accept-reject method and the inverse transform method.
+Practice writing a program in~\textsc{Python} that generates random numbers, distributed according to a falling distribution of the form $e^{-x}$ in the range [0,5].  After doing this, generate the same distribution using the accept-reject method and determine the efficiency of the generation, defined as the fraction of accepted $x$ values with respect to the total generated $x$ values.  How does this efficiency compare for the accept-reject method and the inverse transform method?
 \end{minipage}}
 \end{center}
 
@@ -276,11 +301,11 @@ The parton shower model itself is a recursive process built around the idea of s
 \begin{figure}
 \centering
 \subfloat[]{
-\includegraphics[width=0.4\linewidth]{figures/singlesplitting.png}
+\includegraphics[width=0.5\linewidth]{figures/singlesplitting.png}
 \label{fig:splitting1}
 }
 \subfloat[]{
-\includegraphics[width=0.4\linewidth]{figures/fullshower.png}
+\includegraphics[width=0.5\linewidth]{figures/fullshower.png}
 \label{fig:splitting2}
 }
 \caption{A single one-to-two splitting (left) highlighting the stochastic observables in the process and the composition of multiple splittings to form a full parton shower (right).}
@@ -321,12 +346,12 @@ The entire description of the parton shower model thus far has implicitly assume
 \label{fig:azimuth}
 \end{figure}
 
-It is acceptable to proceed through Section~\ref{sec:mc_had} working in two dimensions.  This can help to build intuition and make the validation of your process model simpler.  However, it is necessary to include the full three dimensional model, as described here, before proceeding to Section~\ref{sec:jetrec}.
+It is recommended to proceed through Section~\ref{sec:mc_had} working in two dimensions.  This can help to build intuition and make the validation of your process model simpler.  However, it is necessary to include the full three dimensional model, as described here, before proceeding to Section~\ref{sec:jetrec}.
 
 
 \subsection{Hadronization}
 \label{sec:mc_had}
-As described in Section~\ref{sec:had}, the parton shower proceeds until the energy scale of the individual particles decreases to the point where it is energetically favorable to form stable hadrons with other partons existing within the event.  The manner in which this happens is not well understood from first principles and for this model, we will take a very simple approach and making a direct translation between each parton and each hadron.  To achieve this, choose an energy scale threshold $E_{crit}$ below which a parton that has been radiated or continuing from the initial splitting does not split further.  This should be made a parameter that is easily tunable in a single location within your program.
+As described in Section~\ref{sec:had}, the parton shower proceeds until the energy scale of the individual particles decreases to the point where it is energetically favorable to form stable hadrons with other partons existing within the event.  The manner in which this happens is not well understood from first principles. For this model, we will take a very simple approach and make a direct translation between each parton and each hadron.  To achieve this, choose an energy scale threshold $E_{crit}$ below which a parton does not split further.  This should be made a parameter that is easily tunable in a single location within your program.
 
 \section{A Jetty Event}
 \label{sec:event}
@@ -374,13 +399,16 @@ d_{ij}=min(p_{Ti}^{2n},p_{Tj}^{2n})\times \frac{\Delta_{ij}}{R}
 d_{iB}=p_{Ti}^{2p}
 \end{equation}
 
-For a given stage of clustering, whether it be the initial stage when there are $N$ initial single particle pseudojets or later when some of these have been bundled together into some lesser number of composite pseudojets, all possible distance measured are calculated.  This will produce $N$C$2$ pseudojet pseudojet distances and $N$ pseudojet-beam distances.  From the full set of distances, the minimum distance dictates the action that is to be taken in the clustering sequence.  In the case that the minimum distance is a $d_{ij}$ distance, it can be interpreted as indicating that in the event, the next best thing to do is group those two particles, $i$ and $j$, together as having originated from a common one-to-two splitting in the parton shower.  Conventionally, this grouping is done by simply adding together the four-momentum vectors of these constituents to obtain some resultant four vector.  If, on the other hand, the minimum distance is a $d_{iB}$ beam distance, then the interpretation is that there exists a pseudojet in the event\footnote{Note that this pseudojet can itself be a single particle or a pseudojet composed of multiple pairings due to previous $d_{ij}$ combinations.} is distinct enough that it should be interpreted as representing a hard parton originating from the underlying physics process.  In this case, the pseudojet is set aside and becomes a jet.
+For a given stage of clustering, whether it be the initial stage when there are $N$ initial single particle pseudojets or later when some of these have been bundled together into some lesser number of composite pseudojets, all possible distance measured are calculated.  This will produce $_N$C$_2$\footnote{This is the number of combinations of $N$ things taken $2$ at a time without replacement, which is calculated as the \href{https://en.wikipedia.org/wiki/Combination}{binomial}.} pseudojet-pseudojet distances and $N$ pseudojet-beam distances.  From the full set of distances, the minimum distance dictates the action that is to be taken in the clustering sequence.  In the case that the minimum distance is a $d_{ij}$ distance, it can be interpreted as indicating that in the event, the next best thing to do is group those two particles, $i$ and $j$, together as having originated from a common one-to-two splitting in the parton shower.  Conventionally, this grouping is done by simply adding together the four-momentum vectors of these constituents to obtain some resultant four vector.  If, on the other hand, the minimum distance is a $d_{iB}$ beam distance, then the interpretation is that there exists a pseudojet in the event\footnote{Note that this pseudojet can itself be a single particle or a pseudojet composed of multiple pairings due to previous $d_{ij}$ combinations.} is distinct enough that it should be interpreted as representing a hard parton originating from the underlying physics process.  In this case, the pseudojet is set aside and becomes a jet.
 
 In both of these cases, either an $ij$ combination or the promotion of a pseudojet $i$ to a jet, the number of pseudojets in the event decreases by one.  Therefore, the algorithm proceeds in this iterative fashion until all pseudojets have been promoted to some jets and there exist no more pseudojets for clustering.
 
 \begin{center}
 \fbox{\begin{minipage}{6in}
-From the previous Monte Carlo model you have created, you have the ability to simulate parton showers/hadronizations that are representative of hadronic activity in LHC collisions.  At this stage, implement the \antikt algorithm to cluster a single event, including proper validation of the procedure.  Note that you will have to specify the parameters $n$ and $R$ which are choices of the algorithm.  Make a histogram of the number of jets that result from this algorithm for 1000 parton showers and do this for the set of $n$ values of [-1,0,1] and $R$ values of [0.01,0.05,0.1,0.5,1.0].  What differences do you see?  Do they make sense?
+From the previous Monte Carlo model you have created, you have the ability to simulate parton showers/hadronizations that are representative of hadronic activity in LHC collisions.  At this stage, implement the clustering algorithm described here to cluster a single event, including proper validation of the procedure.  Note that you will have to specify the parameters $n$ and $R$ which are choices of the algorithm.  Make a histogram\footnote{If you are unfamiliar with python histograms check the python library \href{https://matplotlib.org/}{\textsc{matplotlib}}
+manual.} of the number of jets that result from this algorithm for 1000 parton showers and do this for the set of $n$ values of [-1,0,1] and $R$ values of [0.01,0.05,0.1,0.5,1.0].  What differences do you see?  
+
+A histogram is a great way to check if your program is doing what it is supposed to do. Think about what this histogram should look like and ask youself ``Does it make sense?''
 \end{minipage}}
 \end{center}
 
